@@ -1,5 +1,3 @@
-
-
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -16,7 +14,8 @@ Vue.use(Vuetify)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('navbar', require('./components/NavbarComponent.vue').default);
 Vue.component('table-com', require('./components/TableComponent.vue').default);
-
+Vue.component('nahee', require('./components/NaheeComponent.vue').default);
+Vue.component('esus', require('./components/NavesusComponent.vue').default);
 
 const app = new Vue({
     el: '#app',
@@ -25,4 +24,4 @@ const app = new Vue({
 
 Vue.use(Vuetify, {
     iconfont: 'mdi'
-  })
+})

@@ -1,6 +1,6 @@
 <template>
   <v-sheet
-    height="400"
+    height="00"
     class="overflow-hidden"
     style="position: relative;"
   >
