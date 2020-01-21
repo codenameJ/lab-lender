@@ -38583,6 +38583,7 @@ var render = function() {
                       attrs: { icon: "" },
                       on: {
                         click: function($event) {
+                          $event.stopPropagation()
                           _vm.mini = !_vm.mini
                         }
                       }
