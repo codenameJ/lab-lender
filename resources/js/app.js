@@ -21,6 +21,8 @@ Vue.component('esus', require('./components/NavesusComponent.vue').default);
 
 Vue.component('nav-ta', require('./components/Nav_TA.vue').default);
 Vue.component('navtest', require('./components/navtest.vue').default);
+Vue.component('shop-cart', require('./components/ShopCart.vue').default);
+
 
 const app = new Vue({
     el: '#app',
