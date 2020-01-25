@@ -2,10 +2,12 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import '@mdi/font/css/materialdesignicons.css'
+
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 
-import '@mdi/font/css/materialdesignicons.css'
+
 
 
 Vue.use(Vuetify)
@@ -17,11 +19,14 @@ Vue.component('table-com', require('./components/TableComponent.vue').default);
 Vue.component('nahee', require('./components/NaheeComponent.vue').default);
 Vue.component('esus', require('./components/NavesusComponent.vue').default);
 
+Vue.component('nav-ta', require('./components/Nav_TA.vue').default);
+Vue.component('navtest', require('./components/navtest.vue').default);
+
 const app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
 });
 
 Vue.use(Vuetify, {
-    iconfont: 'mdi'
+    iconfont: 'mdi',
 })

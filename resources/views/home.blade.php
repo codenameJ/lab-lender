@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<nahee></nahee>
+<nav-ta></nav-ta>
 @endsection
