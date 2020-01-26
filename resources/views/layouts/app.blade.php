@@ -39,20 +39,7 @@
                 <Layout></Layout>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<<<<<<< HEAD
-
-                    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-      </li>
-
-    </ul>
-
-
-=======
                     
->>>>>>> d63ec20c83a9b41a0fdbf276ecd077a3cd6eff92
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
