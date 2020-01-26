@@ -35,7 +35,11 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+
+                <Layout></Layout>
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<<<<<<< HEAD
 
                     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -46,6 +50,9 @@
     </ul>
 
 
+=======
+                    
+>>>>>>> d63ec20c83a9b41a0fdbf276ecd077a3cd6eff92
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
