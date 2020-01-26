@@ -2,6 +2,6 @@
 
 @section('content')
 
-<Layout></Layout>
+<app-layout></app-layout>
 
 @endsection

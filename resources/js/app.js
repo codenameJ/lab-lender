@@ -24,6 +24,7 @@ Vue.component('Header', require('./components/HeaderComponent.vue').default);
 Vue.component('Layout', require('./components/LayoutComponent.vue').default);
 
 Vue.component('app-layout', require('./components/ApplayoutComponent.vue').default);
+Vue.component('temp', require('./components/TempComponent.vue').default);
 
 
 
