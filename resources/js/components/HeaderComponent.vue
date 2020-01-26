@@ -233,8 +233,8 @@ export default {
         },
         logout() {
             this.$store
-                .dispatch("auth/logout")
-                .then(() => this.$router.push({ path: "/login" }));
+                .dispatch("/logout")
+                .then(() => this.$router.push({ path: "/welcome" }));
         }
     }
 };

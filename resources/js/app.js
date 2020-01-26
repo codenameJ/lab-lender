@@ -23,6 +23,8 @@ Vue.component('shop-cart', require('./components/ShopCart.vue').default);
 Vue.component('Header', require('./components/HeaderComponent.vue').default);
 Vue.component('Layout', require('./components/LayoutComponent.vue').default);
 
+Vue.component('app-layout', require('./components/ApplayoutComponent.vue').default);
+
 
 
 const app = new Vue({
