@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 <!-- <nav-ta></nav-ta> -->
 <!-- <shop-cart></shop-cart> -->
-<Layout></Layout>
+<!-- <Layout></Layout> -->
 
 @endsection
