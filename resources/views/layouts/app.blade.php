@@ -36,8 +36,6 @@
                 </button>
 
 
-                <Layout></Layout>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     
                     <!-- Left Side Of Navbar -->

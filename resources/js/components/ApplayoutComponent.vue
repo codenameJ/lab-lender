@@ -36,6 +36,13 @@
                 <v-list-item-title><a :href="item.route">{{ item.title }}</a></v-list-item-title>
               </v-list-item>
             </v-list>
+
+            <!-- <v-list>
+              <span>
+              <a href="/logout">Logout</a>
+            </span>
+            </v-list> -->
+
           </v-menu>
 
     </v-toolbar>
@@ -219,8 +226,8 @@ export default {
         dialog: false,
         drawer: true,
         useritems: [
-        { title: 'Profile',route: '/logout' },
-        { title: 'Log Out', route: '/' },
+        { title: 'Profile',route: '/' },
+        { title: 'Log Out', route: '/logout' },
       ],
         menu: [
             {
@@ -277,11 +284,6 @@ export default {
         sidebarToggle() {
             this.drawer = !this.drawer;
         },
-        logout() {
-            this.$store
-                .dispatch("/logout")
-                .then(() => this.$router.push({ path: "/welcome" }));
-        }
     }
 };
 </script>

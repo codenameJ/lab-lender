@@ -27,7 +27,7 @@
               </v-btn>
             </template>
 
-            <v-list>
+            <!-- <v-list>
               <v-list-item
                 v-for="item in useritems"
                 :key="item.title"
@@ -35,7 +35,17 @@
               >
                 <v-list-item-title><a :href="item.route">{{ item.title }}</a></v-list-item-title>
               </v-list-item>
+            </v-list> -->
+
+            <v-list>
+              <v-list-tile @click="logout">
+                <v-list-tile-title>Logout</v-list-tile-title>
+                  <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                    <input type="hidden" name="_token" :value="token">
+                  </form>
+              </v-list-tile>
             </v-list>
+              
           </v-menu>
 
     </v-toolbar>
@@ -219,7 +229,7 @@ export default {
         dialog: false,
         drawer: true,
         useritems: [
-        { title: 'Profile',route: '/logout' },
+        { title: 'Profile',route: 'Auth::logout();' },
         { title: 'Log Out', route: '/' },
       ],
         menu: [
@@ -278,9 +288,7 @@ export default {
             this.drawer = !this.drawer;
         },
         logout() {
-            this.$store
-                .dispatch("/logout")
-                .then(() => this.$router.push({ path: "/welcome" }));
+          document.getElementById('logout-form').submit()
         }
     }
 };

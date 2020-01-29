@@ -2228,6 +2228,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
   components: {},
@@ -2239,10 +2246,10 @@ __webpack_require__.r(__webpack_exports__);
       drawer: true,
       useritems: [{
         title: 'Profile',
-        route: '/logout'
+        route: '/'
       }, {
         title: 'Log Out',
-        route: '/'
+        route: '/logout'
       }],
       menu: [{
         icon: "home",
@@ -2288,15 +2295,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     sidebarToggle: function sidebarToggle() {
       this.drawer = !this.drawer;
-    },
-    logout: function logout() {
-      var _this = this;
-
-      this.$store.dispatch("/logout").then(function () {
-        return _this.$router.push({
-          path: "/welcome"
-        });
-      });
     }
   }
 });
@@ -3105,6 +3103,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
   components: {},
@@ -3116,7 +3124,7 @@ __webpack_require__.r(__webpack_exports__);
       drawer: true,
       useritems: [{
         title: 'Profile',
-        route: '/logout'
+        route: 'Auth::logout();'
       }, {
         title: 'Log Out',
         route: '/'
@@ -3167,13 +3175,7 @@ __webpack_require__.r(__webpack_exports__);
       this.drawer = !this.drawer;
     },
     logout: function logout() {
-      var _this = this;
-
-      this.$store.dispatch("/logout").then(function () {
-        return _this.$router.push({
-          path: "/welcome"
-        });
-      });
+      document.getElementById('logout-form').submit();
     }
   }
 });
@@ -40367,23 +40369,34 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "v-list",
-                  _vm._l(_vm.useritems, function(item) {
-                    return _c(
-                      "v-list-item",
-                      {
-                        key: item.title,
-                        attrs: { router: "", to: item.route }
-                      },
+                  [
+                    _c(
+                      "v-list-tile",
+                      { on: { click: _vm.logout } },
                       [
-                        _c("v-list-item-title", [
-                          _c("a", { attrs: { href: item.route } }, [
-                            _vm._v(_vm._s(item.title))
-                          ])
-                        ])
+                        _c("v-list-tile-title", [_vm._v("Logout")]),
+                        _vm._v(" "),
+                        _c(
+                          "form",
+                          {
+                            staticStyle: { display: "none" },
+                            attrs: {
+                              id: "logout-form",
+                              action: "/logout",
+                              method: "POST"
+                            }
+                          },
+                          [
+                            _c("input", {
+                              attrs: { type: "hidden", name: "_token" },
+                              domProps: { value: _vm.token }
+                            })
+                          ]
+                        )
                       ],
                       1
                     )
-                  }),
+                  ],
                   1
                 )
               ],
