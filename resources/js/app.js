@@ -16,12 +16,7 @@ Vue.use(Vuetify)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('table-com', require('./components/TableComponent.vue').default);
 
-Vue.component('nav-ta', require('./components/Nav_TA.vue').default);
-Vue.component('navtest', require('./components/navtest.vue').default);
 Vue.component('shop-cart', require('./components/ShopCart.vue').default);
-
-Vue.component('Header', require('./components/HeaderComponent.vue').default);
-Vue.component('Layout', require('./components/LayoutComponent.vue').default);
 
 Vue.component('app-layout', require('./components/ApplayoutComponent.vue').default);
 Vue.component('temp', require('./components/TempComponent.vue').default);
