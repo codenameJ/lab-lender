@@ -110,7 +110,7 @@
                   class="mr-3"
                   >
                     <template v-slot:activator>
-                      <v-list-item-title style="font-size:1em">
+                      <v-list-item-title style="font-size:1.1em">
                       &nbsp&nbsp&nbsp{{ item.text }}
                       </v-list-item-title>
                     </template>
@@ -145,7 +145,7 @@
                     <v-icon class="mr-3">{{ item.icon }}</v-icon>
                     </v-list-item-action>
                     <v-list-item-content>
-                                <v-list-item-title class="text-menu" style="font-size:1em">
+                                <v-list-item-title class="text-menu" style="font-size:1.1em">
                                     <a class="menuhref" :href="item.href">{{ item.text }}</a>
                                 </v-list-item-title>
                             </v-list-item-content>

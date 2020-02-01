@@ -28,11 +28,12 @@
 
                 <br />
                 <v-btn
-                    style="text-decoration : none; color : #000000;"
+                    style="text-decoration : none; color : #FFFFFF; "
                     href="/login"
-                    class="justify-right"
+                    class="justify-right button-btn-gradient"
                     large
-                    outlined color="success"
+                    
+                    
                 >
                     LOGIN WITH CMU ACCOUNT
                 </v-btn>
@@ -40,3 +41,11 @@
         </v-card-text>
     </v-card>
 </template>
+
+<style scoped>
+    .button-btn-gradient {
+        background-color: #0c0b0b;
+        background-image: linear-gradient(to bottom, #2ad4d9, #2ad4a9);
+          font-weight: bold;
+    }
+</style>
