@@ -1,6 +1,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.axios=require('axios');
 
 import '@mdi/font/css/materialdesignicons.css'
 
@@ -21,6 +22,7 @@ Vue.component('shop-cart', require('./components/ShopCart.vue').default);
 Vue.component('app-layout', require('./components/ApplayoutComponent.vue').default);
 Vue.component('temp', require('./components/TempComponent.vue').default);
 
+Vue.component('equipment', require('./components/EquipComponent.vue').default);
 Vue.component('welcome-card', require('./components/WelcomeCard.vue').default);
 
 

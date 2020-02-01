@@ -1,5 +1,5 @@
 <template>
-<v-app>
+<div id="app">
     <nav>
       <v-toolbar flat>
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
@@ -155,7 +155,7 @@
             </v-navigation-drawer>
 
 </nav>
-</v-app>
+</div>
 </template>
 
 <script>
