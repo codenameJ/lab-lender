@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,15 +23,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<style>
-
-#fixedbutton {
-    position: fixed;
-    bottom: 550px;
-    right: 550px; 
-}
-
-</style>
+    <style>
+        #fixedbutton {
+            position: fixed;
+            bottom: 550px;
+            right: 550px;
+        }
+    </style>
 
 
 </head>
@@ -38,12 +37,12 @@
 <body>
 
     <div id="app">
-        
-    <app-layout></app-layout>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <v-app>
+            <app-layout></app-layout>
+            <v-col class="md-9">
+                @yield('content')
+            </v-col>
+        </v-app>
     </div>
 </body>
 
