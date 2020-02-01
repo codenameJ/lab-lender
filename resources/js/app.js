@@ -23,6 +23,7 @@ Vue.component('app-layout', require('./components/ApplayoutComponent.vue').defau
 Vue.component('temp', require('./components/TempComponent.vue').default);
 
 Vue.component('equipment', require('./components/EquipComponent.vue').default);
+Vue.component('welcome-card', require('./components/WelcomeCard.vue').default);
 
 
 

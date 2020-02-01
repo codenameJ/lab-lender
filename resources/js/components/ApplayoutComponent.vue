@@ -21,18 +21,39 @@
                             </v-btn>
                         </template>
 
-                        <v-list>
-                            <v-list-item
-                                v-for="item in useritems"
-                                :key="item.title"
-                            >
-                                <v-list-item-title
-                                    ><a class="userhref" :href="item.href">{{
-                                        item.title
-                                    }}</a></v-list-item-title
-                                >
-                            </v-list-item>
-                        </v-list>
+          <!-- <v-list>
+            <v-list-item
+              v-for="item in useritems"
+              :key="item.title">
+                  <v-list-item-title><a class="userhref" :href="item.href">{{ item.title }}</a></v-list-item-title>
+            </v-list-item>
+          </v-list>  อันเก่า -->
+
+          <v-card>
+          <v-list>
+            <v-list-item>
+              <v-list-item-avatar>
+                <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+              </v-list-item-avatar>
+  
+              <v-list-item-content>
+                <v-list-item-title>Tanawit Prasertsak</v-list-item-title>
+                <v-list-item-subtitle>Student</v-list-item-subtitle>
+              </v-list-item-content>
+  
+              
+              </v-list-item-action>
+            </v-list-item>
+          </v-list>
+  
+          <v-divider></v-divider>
+  
+          <v-card-actions>
+            <v-spacer></v-spacer>
+  
+            <v-btn style="text-decoration : none; color : #000000;" href='/logout' text @click="menu = false">Log out</v-btn>
+          </v-card-actions>
+        </v-card>
 
                         <!-- <v-list>
                 <span>
@@ -43,14 +64,37 @@
                 </v-toolbar>
             </v-row>
 
-            <v-row>
-                <v-navigation-drawer
-                    app
-                    v-model="drawer"
-                    class="background-gradient"
-                    src="/img/nav.png"
-                    absolute
-                    dark
+        </v-menu>
+      </v-toolbar>
+
+    <v-navigation-drawer
+      app
+      v-model="drawer"
+      class="background-gradient"
+      src="/img/nav1.png"
+      overlay-opacity=70
+      absolute
+      dark>
+        <v-list-item>
+          <v-img
+              class="mt-3"
+              src="/img/icon.png"
+              max-width="50"
+              max-height="50"
+              >
+          </v-img>
+            <div class="mx-4 pt-3 font-weight-bold" style="font-size:1.5em">
+              LAB LENDER
+            </div>
+          </v-list-item>
+          <v-divider></v-divider>
+
+          <v-list nav dense>
+            <template v-for="item in menu">
+              <v-row
+                v-if="item.heading"
+                :key="item.heading"
+                align="center"
                 >
                     <v-list-item>
                         <v-img
@@ -85,6 +129,38 @@
                                     </v-subheader>
                                 </v-col>
                             </v-row>
+                <v-list-group
+                  v-else-if="item.children"
+                  :key="item.text"  
+                  v-model="item.model"
+                  :prepend-icon="item.model ? item.icon : item['icon-alt']"
+                  class="mr-3"
+                  >
+                    <template v-slot:activator>
+                      <v-list-item-title style="font-size:1em">
+                      &nbsp&nbsp&nbsp{{ item.text }}
+                      </v-list-item-title>
+                    </template>
+                  <v-list-item
+                    v-for="child in item.children"
+                    :key="child.text"
+                    :to="child.route"
+                    nuxt
+                    >
+                    <v-list-item-action>
+                      <v-icon class="mr-3">
+                          {{ child.icon }}
+                      </v-icon>
+                    </v-list-item-action>
+                 <v-list-item-content>
+                    <v-list-item-title
+                      class="text-sub-menu mr-3"
+                      >
+                      &nbsp&nbsp&nbsp&nbsp{{ child.text }}
+                      </v-list-item-title>
+                  </v-list-item-content>
+                  </v-list-item>
+                  </v-list-group>
 
                             <v-list-group
                                 v-else-if="item.children"
