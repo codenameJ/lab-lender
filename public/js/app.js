@@ -2173,13 +2173,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
 //
 //
->>>>>>> 7f2b3f98ef2a4a3b0a10c07d56a37dd446d95c31
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
   components: {},
@@ -2190,22 +2187,22 @@ __webpack_require__.r(__webpack_exports__);
       dialog: false,
       drawer: true,
       useritems: [{
-        title: "Profile",
-        href: "/"
+        title: 'Profile',
+        href: '/'
       }, {
-        title: "Log Out",
-        href: "/logout"
+        title: 'Log Out',
+        href: '/logout'
       }],
       menu: [{
         icon: "home",
         "icon-alt": "home",
         text: "หน้าหลัก",
-        href: "/home"
+        href: '/home'
       }, {
         icon: "announcement",
         "icon-alt": "announcement",
         text: "ประกาศ",
-        href: "/announcement"
+        href: '/announcement'
       }, {
         icon: "build",
         "icon-alt": "build",
@@ -7365,7 +7362,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.userhref[data-v-e3635d46] {\r\n    text-decoration: none;\r\n    color: #000000;\n}\n.menuhref[data-v-e3635d46] {\r\n    text-decoration: none;\r\n    color: #ffffff;\n}\r\n", ""]);
+exports.push([module.i, "\n.userhref[data-v-e3635d46] {\r\ntext-decoration : none; \r\ncolor : #000000;\n}\n.menuhref[data-v-e3635d46] {\r\ntext-decoration : none; \r\ncolor : #FFFFFF;\n}\r\n", ""]);
 
 // exports
 
@@ -38864,89 +38861,64 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "app" } }, [
+  return _c("v-app", [
     _c(
       "nav",
       [
         _c(
-          "v-row",
+          "v-toolbar",
+          { attrs: { flat: "" } },
           [
+            _c("v-app-bar-nav-icon", {
+              on: {
+                click: function($event) {
+                  _vm.drawer = !_vm.drawer
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("v-toolbar-title", [_vm._v("Lab Lender")]),
+            _vm._v(" "),
+            _c("v-spacer"),
+            _vm._v(" "),
             _c(
-              "v-toolbar",
-              { attrs: { flat: "" } },
-              [
-                _c("v-app-bar-nav-icon", {
-                  on: {
-                    click: function($event) {
-                      _vm.drawer = !_vm.drawer
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("v-toolbar-title", [_vm._v("Lab Lender")]),
-                _vm._v(" "),
-                _c("v-spacer"),
-                _vm._v(" "),
-                _c(
-<<<<<<< HEAD
-                  "v-btn",
-                  { attrs: { icon: "" } },
-                  [_c("v-icon", [_vm._v("mdi-magnify")])],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "v-btn",
-                  { attrs: { icon: "" } },
-                  [_c("v-icon", [_vm._v("mdi-dots-vertical")])],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "v-menu",
+              "v-btn",
+              { attrs: { icon: "" } },
+              [_c("v-icon", [_vm._v("mdi-magnify")])],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "v-btn",
+              { attrs: { icon: "" } },
+              [_c("v-icon", [_vm._v("mdi-dots-vertical")])],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "v-menu",
+              {
+                attrs: { bottom: "", left: "" },
+                scopedSlots: _vm._u([
                   {
-                    attrs: { bottom: "", left: "" },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "activator",
-                        fn: function(ref) {
-                          var on = ref.on
-                          return [
-                            _c(
-                              "v-btn",
-                              _vm._g({ attrs: { icon: "" } }, on),
-                              [_c("v-icon", [_vm._v("mdi-account")])],
-                              1
-                            )
-                          ]
-                        }
-                      }
-                    ])
-                  },
-                  [
-                    _vm._v(" "),
-                    _c(
-                      "v-list",
-                      _vm._l(_vm.useritems, function(item) {
-                        return _c(
-                          "v-list-item",
-                          { key: item.title },
-                          [
-                            _c("v-list-item-title", [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "userhref",
-                                  attrs: { href: item.href }
-                                },
-                                [_vm._v(_vm._s(item.title))]
-                              )
-                            ])
-                          ],
+                    key: "activator",
+                    fn: function(ref) {
+                      var on = ref.on
+                      return [
+                        _c(
+                          "v-btn",
+                          _vm._g({ attrs: { icon: "" } }, on),
+                          [_c("v-icon", [_vm._v("mdi-account")])],
                           1
                         )
-                      }),
-=======
+                      ]
+                    }
+                  }
+                ])
+              },
+              [
+                _vm._v(" "),
+                _c(
                   "v-card",
                   [
                     _c(
@@ -39007,7 +38979,6 @@ var render = function() {
                           [_vm._v("Log out")]
                         )
                       ],
->>>>>>> 7f2b3f98ef2a4a3b0a10c07d56a37dd446d95c31
                       1
                     )
                   ],
@@ -39021,9 +38992,6 @@ var render = function() {
         ),
         _vm._v(" "),
         _c(
-<<<<<<< HEAD
-          "v-row",
-=======
           "v-navigation-drawer",
           {
             staticClass: "background-gradient",
@@ -39042,120 +39010,64 @@ var render = function() {
               expression: "drawer"
             }
           },
->>>>>>> 7f2b3f98ef2a4a3b0a10c07d56a37dd446d95c31
           [
             _c(
-              "v-navigation-drawer",
-              {
-                staticClass: "background-gradient",
-                attrs: { app: "", src: "/img/nav.png", absolute: "", dark: "" },
-                model: {
-                  value: _vm.drawer,
-                  callback: function($$v) {
-                    _vm.drawer = $$v
-                  },
-                  expression: "drawer"
-                }
-              },
+              "v-list-item",
               [
-                _c(
-                  "v-list-item",
-                  [
-                    _c("v-img", {
-                      staticClass: "mt-3",
-                      attrs: {
-                        src: "/img/icon.png",
-                        "max-width": "50",
-                        "max-height": "50"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "mx-4 pt-3 font-weight-bold",
-                        staticStyle: { "font-size": "1.5em" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        LAB LENDER\n                    "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("v-divider"),
+                _c("v-img", {
+                  staticClass: "mt-3",
+                  attrs: {
+                    src: "/img/icon.png",
+                    "max-width": "50",
+                    "max-height": "50"
+                  }
+                }),
                 _vm._v(" "),
                 _c(
-                  "v-list",
-                  { attrs: { nav: "", dense: "" } },
-                  [
-                    _vm._l(_vm.menu, function(item) {
-                      return [
-                        item.heading
-                          ? _c(
-                              "v-row",
-                              { key: item.heading, attrs: { align: "center" } },
+                  "div",
+                  {
+                    staticClass: "mx-4 pt-3 font-weight-bold",
+                    staticStyle: { "font-size": "1.5em" }
+                  },
+                  [_vm._v("\r\n              LAB LENDER\r\n            ")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("v-divider"),
+            _vm._v(" "),
+            _c(
+              "v-list",
+              { attrs: { nav: "", dense: "" } },
+              [
+                _vm._l(_vm.menu, function(item) {
+                  return [
+                    item.heading
+                      ? _c(
+                          "v-row",
+                          { key: item.heading, attrs: { align: "center" } },
+                          [
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "6" } },
                               [
-                                _c(
-                                  "v-col",
-                                  { attrs: { cols: "6" } },
-                                  [
-                                    item.heading
-                                      ? _c(
-                                          "v-subheader",
-                                          { staticClass: "text-menu" },
-                                          [
-                                            _vm._v(
-                                              "\n                                    " +
-                                                _vm._s(item.heading) +
-                                                "\n                                "
-                                            )
-                                          ]
+                                item.heading
+                                  ? _c(
+                                      "v-subheader",
+                                      { staticClass: "text-menu" },
+                                      [
+                                        _vm._v(
+                                          "\r\n                    " +
+                                            _vm._s(item.heading) +
+                                            "\r\n                    "
                                         )
-                                      : _vm._e()
-                                  ],
-                                  1
-                                )
+                                      ]
+                                    )
+                                  : _vm._e()
                               ],
                               1
                             )
-<<<<<<< HEAD
-                          : item.children
-                          ? _c(
-                              "v-list-group",
-                              {
-                                key: item.text,
-                                staticClass: "text-menu mr-3",
-                                attrs: {
-                                  "prepend-icon": item.model
-                                    ? item.icon
-                                    : item["icon-alt"]
-                                },
-                                scopedSlots: _vm._u(
-                                  [
-                                    {
-                                      key: "activator",
-                                      fn: function() {
-                                        return [
-                                          _c(
-                                            "v-list-item-title",
-                                            {
-                                              staticClass: "text-menu",
-                                              staticStyle: {
-                                                "font-size": "1em"
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                        " +
-                                                  _vm._s(item.text) +
-                                                  "\n                                "
-                                              )
-                                            ]
-=======
                           ],
                           1
                         )
@@ -39184,128 +39096,120 @@ var render = function() {
                                             "\r\n                         " +
                                               _vm._s(item.text) +
                                               "\r\n                      "
->>>>>>> 7f2b3f98ef2a4a3b0a10c07d56a37dd446d95c31
                                           )
                                         ]
-                                      },
-                                      proxy: true
-                                    }
-                                  ],
-                                  null,
-                                  true
-                                ),
-                                model: {
-                                  value: item.model,
-                                  callback: function($$v) {
-                                    _vm.$set(item, "model", $$v)
+                                      )
+                                    ]
                                   },
-                                  expression: "item.model"
+                                  proxy: true
                                 }
+                              ],
+                              null,
+                              true
+                            ),
+                            model: {
+                              value: item.model,
+                              callback: function($$v) {
+                                _vm.$set(item, "model", $$v)
                               },
-                              [
-                                _vm._v(" "),
-                                _vm._l(item.children, function(child) {
-                                  return _c(
-                                    "v-list-item",
-                                    {
-                                      key: child.text,
-                                      attrs: { to: child.route, nuxt: "" }
-                                    },
+                              expression: "item.model"
+                            }
+                          },
+                          [
+                            _vm._v(" "),
+                            _vm._l(item.children, function(child) {
+                              return _c(
+                                "v-list-item",
+                                {
+                                  key: child.text,
+                                  attrs: { to: child.route, nuxt: "" }
+                                },
+                                [
+                                  _c(
+                                    "v-list-item-action",
+                                    [
+                                      _c("v-icon", { staticClass: "mr-3" }, [
+                                        _vm._v(
+                                          "\r\n                          " +
+                                            _vm._s(child.icon) +
+                                            "\r\n                      "
+                                        )
+                                      ])
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-list-item-content",
                                     [
                                       _c(
-                                        "v-list-item-action",
+                                        "v-list-item-title",
+                                        { staticClass: "text-sub-menu mr-3" },
                                         [
-                                          _c(
-                                            "v-icon",
-                                            { staticClass: "mr-3" },
-                                            [
-                                              _vm._v(
-                                                "\n                                        " +
-                                                  _vm._s(child.icon) +
-                                                  "\n                                    "
-                                              )
-                                            ]
+                                          _vm._v(
+                                            "\r\n                          " +
+                                              _vm._s(child.text) +
+                                              "\r\n                      "
                                           )
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-list-item-content",
-                                        [
-                                          _c(
-                                            "v-list-item-title",
-                                            {
-                                              staticClass: "text-sub-menu mr-3"
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                            " +
-                                                  _vm._s(child.text) +
-                                                  "\n                                    "
-                                              )
-                                            ]
-                                          )
-                                        ],
-                                        1
+                                        ]
                                       )
                                     ],
                                     1
                                   )
-                                })
+                                ],
+                                1
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      : _c(
+                          "v-list-item",
+                          {
+                            key: item.text,
+                            attrs: { to: item.route, nuxt: "" }
+                          },
+                          [
+                            _c(
+                              "v-list-item-action",
+                              [
+                                _c("v-icon", { staticClass: "mr-3" }, [
+                                  _vm._v(_vm._s(item.icon))
+                                ])
                               ],
-                              2
-                            )
-                          : _c(
-                              "v-list-item",
-                              {
-                                key: item.text,
-                                attrs: { to: item.route, nuxt: "" }
-                              },
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-item-content",
                               [
                                 _c(
-                                  "v-list-item-action",
-                                  [
-                                    _c("v-icon", { staticClass: "mr-3" }, [
-                                      _vm._v(_vm._s(item.icon))
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item-content",
+                                  "v-list-item-title",
+                                  {
+                                    staticClass: "text-menu",
+                                    staticStyle: { "font-size": "1em" }
+                                  },
                                   [
                                     _c(
-                                      "v-list-item-title",
+                                      "a",
                                       {
-                                        staticClass: "text-menu",
-                                        staticStyle: { "font-size": "1em" }
+                                        staticClass: "menuhref",
+                                        attrs: { href: item.href }
                                       },
-                                      [
-                                        _c(
-                                          "a",
-                                          {
-                                            staticClass: "menuhref",
-                                            attrs: { href: item.href }
-                                          },
-                                          [_vm._v(_vm._s(item.text))]
-                                        )
-                                      ]
+                                      [_vm._v(_vm._s(item.text))]
                                     )
-                                  ],
-                                  1
+                                  ]
                                 )
                               ],
                               1
                             )
-                      ]
-                    })
-                  ],
-                  2
-                )
+                          ],
+                          1
+                        )
+                  ]
+                })
               ],
-              1
+              2
             )
           ],
           1
@@ -93292,11 +93196,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('table-com', __webpack_requ
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('shop-cart', __webpack_require__(/*! ./components/ShopCart.vue */ "./resources/js/components/ShopCart.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('app-layout', __webpack_require__(/*! ./components/ApplayoutComponent.vue */ "./resources/js/components/ApplayoutComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('temp', __webpack_require__(/*! ./components/TempComponent.vue */ "./resources/js/components/TempComponent.vue")["default"]);
-<<<<<<< HEAD
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('equipment', __webpack_require__(/*! ./components/EquipComponent.vue */ "./resources/js/components/EquipComponent.vue")["default"]);
-=======
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('welcome-card', __webpack_require__(/*! ./components/WelcomeCard.vue */ "./resources/js/components/WelcomeCard.vue")["default"]);
->>>>>>> 7f2b3f98ef2a4a3b0a10c07d56a37dd446d95c31
 var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: '#app',
   vuetify: new vuetify__WEBPACK_IMPORTED_MODULE_2___default.a()
