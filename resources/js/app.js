@@ -21,6 +21,8 @@ Vue.component('shop-cart', require('./components/ShopCart.vue').default);
 Vue.component('app-layout', require('./components/ApplayoutComponent.vue').default);
 Vue.component('temp', require('./components/TempComponent.vue').default);
 
+Vue.component('welcome-card', require('./components/WelcomeCard.vue').default);
+
 
 
 const app = new Vue({

@@ -20,13 +20,39 @@
             </v-btn>
           </template>
 
-          <v-list>
+          <!-- <v-list>
             <v-list-item
               v-for="item in useritems"
               :key="item.title">
                   <v-list-item-title><a class="userhref" :href="item.href">{{ item.title }}</a></v-list-item-title>
             </v-list-item>
+          </v-list>  อันเก่า -->
+
+          <v-card>
+          <v-list>
+            <v-list-item>
+              <v-list-item-avatar>
+                <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+              </v-list-item-avatar>
+  
+              <v-list-item-content>
+                <v-list-item-title>Tanawit Prasertsak</v-list-item-title>
+                <v-list-item-subtitle>Student</v-list-item-subtitle>
+              </v-list-item-content>
+  
+              
+              </v-list-item-action>
+            </v-list-item>
           </v-list>
+  
+          <v-divider></v-divider>
+  
+          <v-card-actions>
+            <v-spacer></v-spacer>
+  
+            <v-btn style="text-decoration : none; color : #000000;" href='/logout' text @click="menu = false">Log out</v-btn>
+          </v-card-actions>
+        </v-card>
 
               <!-- <v-list>
                 <span>
@@ -41,7 +67,8 @@
       app
       v-model="drawer"
       class="background-gradient"
-      src="/img/nav.png"
+      src="/img/nav1.png"
+      overlay-opacity=70
       absolute
       dark>
         <v-list-item>
@@ -80,11 +107,11 @@
                   :key="item.text"  
                   v-model="item.model"
                   :prepend-icon="item.model ? item.icon : item['icon-alt']"
-                  class="text-menu mr-3"
+                  class="mr-3"
                   >
                     <template v-slot:activator>
-                      <v-list-item-title class="text-menu" style="font-size:1em">
-                      &nbsp&nbsp&nbsp&nbsp{{ item.text }}
+                      <v-list-item-title style="font-size:1em">
+                      &nbsp&nbsp&nbsp{{ item.text }}
                       </v-list-item-title>
                     </template>
                   <v-list-item
