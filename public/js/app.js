@@ -2177,6 +2177,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
   components: {},
@@ -2187,22 +2207,22 @@ __webpack_require__.r(__webpack_exports__);
       dialog: false,
       drawer: true,
       useritems: [{
-        title: 'Profile',
-        href: '/'
+        title: "Profile",
+        href: "/"
       }, {
-        title: 'Log Out',
-        href: '/logout'
+        title: "Log Out",
+        href: "/logout"
       }],
       menu: [{
         icon: "home",
         "icon-alt": "home",
         text: "หน้าหลัก",
-        href: '/home'
+        href: "/home"
       }, {
         icon: "announcement",
         "icon-alt": "announcement",
         text: "ประกาศ",
-        href: '/announcement'
+        href: "/announcement"
       }, {
         icon: "build",
         "icon-alt": "build",
@@ -2232,11 +2252,22 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
-  computed: {},
+  computed: {
+    isMobile: function isMobile() {
+      return window.innerWidth < 600;
+    }
+  },
   watch: {},
   methods: {
     sidebarToggle: function sidebarToggle() {
       this.drawer = !this.drawer;
+    },
+    checkMobile: function checkMobile() {
+      console.log("ttt");
+
+      if (this.isMobile) {
+        this.drawer = false;
+      }
     }
   }
 });
@@ -7362,7 +7393,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.userhref[data-v-e3635d46] {\r\ntext-decoration : none; \r\ncolor : #000000;\n}\n.menuhref[data-v-e3635d46] {\r\ntext-decoration : none; \r\ncolor : #FFFFFF;\n}\r\n", ""]);
+exports.push([module.i, "\n.userhref[data-v-e3635d46] {\r\n    text-decoration: none;\r\n    color: #000000;\n}\n.menuhref[data-v-e3635d46] {\r\n    text-decoration: none;\r\n    color: #ffffff;\n}\r\n", ""]);
 
 // exports
 
@@ -39078,7 +39109,7 @@ var render = function() {
                     staticClass: "mx-4 pt-3 font-weight-bold",
                     staticStyle: { "font-size": "1.5em" }
                   },
-                  [_vm._v("\r\n              LAB LENDER\r\n            ")]
+                  [_vm._v("\n                    LAB LENDER\n                ")]
                 )
               ],
               1
@@ -39107,9 +39138,9 @@ var render = function() {
                                       { staticClass: "text-menu" },
                                       [
                                         _vm._v(
-                                          "\r\n                    " +
+                                          "\n                                " +
                                             _vm._s(item.heading) +
-                                            "\r\n                    "
+                                            "\n                            "
                                         )
                                       ]
                                     )
@@ -39144,9 +39175,9 @@ var render = function() {
                                         },
                                         [
                                           _vm._v(
-                                            "\r\n                         " +
+                                            "\n                                   " +
                                               _vm._s(item.text) +
-                                              "\r\n                      "
+                                              "\n                            "
                                           )
                                         ]
                                       )
@@ -39181,9 +39212,9 @@ var render = function() {
                                     [
                                       _c("v-icon", { staticClass: "mr-3" }, [
                                         _vm._v(
-                                          "\r\n                          " +
+                                          "\n                                    " +
                                             _vm._s(child.icon) +
-                                            "\r\n                      "
+                                            "\n                                "
                                         )
                                       ])
                                     ],
@@ -39198,9 +39229,9 @@ var render = function() {
                                         { staticClass: "text-sub-menu mr-3" },
                                         [
                                           _vm._v(
-                                            "\r\n                          " +
+                                            "\n                                        " +
                                               _vm._s(child.text) +
-                                              "\r\n                      "
+                                              "\n                                "
                                           )
                                         ]
                                       )
@@ -39218,7 +39249,12 @@ var render = function() {
                           "v-list-item",
                           {
                             key: item.text,
-                            attrs: { to: item.route, nuxt: "" }
+                            attrs: { to: item.route, nuxt: "" },
+                            on: {
+                              click: function($event) {
+                                return _vm.checkMobile()
+                              }
+                            }
                           },
                           [
                             _c(
@@ -39899,7 +39935,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-card",
-    { staticClass: "mx-auto p-4", attrs: { width: "1500", height: "700" } },
+    {
+      staticClass: "mx-auto p-4",
+      attrs: { "max-width": "1500", "max-height": "700" }
+    },
     [
       _c(
         "v-card-text",

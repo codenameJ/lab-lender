@@ -1,5 +1,5 @@
 <template>
-    <v-card class="mx-auto p-4" width="1500" height="700">
+    <v-card class="mx-auto p-4" max-width="1500" max-height="700">
         <v-card-text>
             <!-- <div>Word of the Day display-1</div> -->
             <h1
