@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <v-app>
+        <!-- <v-app>
             <v-content>
                 <table class="table table-bordered">
                <tr>
@@ -21,7 +21,27 @@
                </tr>
                </table>
             </v-content>
-        </v-app>
+        </v-app> -->
+        <v-content>
+            <v-card>
+                <v-card-title>
+                    Equipment List
+                    <v-spacer></v-spacer>
+                    <v-text-field
+                        v-model="search"
+                        append-icon="search"
+                        label="Search"
+                        single-line
+                        hide-details
+                    ></v-text-field>
+                </v-card-title>
+                <v-data-table
+                    :headers="headers"
+                    :items="equip"
+                    :search="search"
+                ></v-data-table>
+            </v-card>
+        </v-content>
     </div>
 </template>
 
@@ -42,26 +62,26 @@ export default {
         return {
             search: "",
             headers: [
+                { text: "ID", value: "Equip_id" },
                 {
-                    text: "Equipment Name",
+                    text: "Equip_Name",
                     align: "left",
                     sortable: false,
                     value: "name"
                 },
-                { text: "ID", value: 'id' },
-                { text: "Qty", value: 'num' },
-                { text: "Lab", value: 'lab' },
-                { text: "Created at", value: 'createdat' },
-                { text: "Updated at", value: 'updatedat' }
+                { text: "Qty", value: "Equip_num" },
+                { text: "Lab", value: "Lab_id" },
+                { text: "Created at", value: "created_at" },
+                { text: "Updated at", value: "updated_at" }
             ],
             equip: [],
             equip: {
                 Equip_id: 0,
-                Equip_Name: '',
-                Equip_num: '',
-                Lab_id: '',
-                created_at:'',
-                updated_at:''
+                Equip_Name: "",
+                Equip_num: "",
+                Lab_id: "",
+                created_at: "",
+                updated_at: ""
             }
         };
     }

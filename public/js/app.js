@@ -2162,22 +2162,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['username'],
+  mounted: function mounted() {
+    console.log(this.username);
+  },
   name: "Header",
   components: {},
   data: function data() {
@@ -2212,22 +2201,22 @@ __webpack_require__.r(__webpack_exports__);
         icon: "assignment",
         "icon-alt": "assignment",
         text: "คำขอยืม",
-        href: "/reports/summarize"
+        href: "/request"
       }, {
         icon: "history",
         "icon-alt": "history",
         text: "ประวัติ",
-        href: "/reports/summarize"
+        href: "/history"
       }, {
         icon: "group",
         "icon-alt": "group",
         text: "จัดการผู้ใช้งาน",
         children: [{
           text: "นักศึกษา",
-          route: "/reports/summarize"
+          route: "/user/student"
         }, {
           text: "ผู้ช่วยสอน (TA)",
-          route: "/reports/daily"
+          route: "/user/ta"
         }]
       }]
     };
@@ -2282,6 +2271,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("OK");
@@ -2300,34 +2309,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return _defineProperty({
       search: "",
       headers: [{
-        text: "Equipment Name",
+        text: "ID",
+        value: "Equip_id"
+      }, {
+        text: "Equip_Name",
         align: "left",
         sortable: false,
         value: "name"
       }, {
-        text: "ID",
-        value: 'id'
-      }, {
         text: "Qty",
-        value: 'num'
+        value: "Equip_num"
       }, {
         text: "Lab",
-        value: 'lab'
+        value: "Lab_id"
       }, {
         text: "Created at",
-        value: 'createdat'
+        value: "created_at"
       }, {
         text: "Updated at",
-        value: 'updatedat'
+        value: "updated_at"
       }],
       equip: []
     }, "equip", {
       Equip_id: 0,
-      Equip_Name: '',
-      Equip_num: '',
-      Lab_id: '',
-      created_at: '',
-      updated_at: ''
+      Equip_Name: "",
+      Equip_num: "",
+      Lab_id: "",
+      created_at: "",
+      updated_at: ""
     });
   }
 });
@@ -38926,7 +38935,7 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("v-toolbar-title", [_vm._v("Lab Lender")]),
+            _c("v-toolbar-title", [_c("span", [_vm._v("Lab Lender")])]),
             _vm._v(" "),
             _c("v-spacer"),
             _vm._v(" "),
@@ -38990,7 +38999,7 @@ var render = function() {
                               "v-list-item-content",
                               [
                                 _c("v-list-item-title", [
-                                  _vm._v("Tanawit Prasertsak")
+                                  _vm._v(_vm._s(_vm.username))
                                 ]),
                                 _vm._v(" "),
                                 _c("v-list-item-subtitle", [_vm._v("Student")])
@@ -39014,10 +39023,7 @@ var render = function() {
                         _c(
                           "v-btn",
                           {
-                            staticStyle: {
-                              "text-decoration": "none",
-                              color: "#000000"
-                            },
+                            staticClass: "userhref",
                             attrs: { href: "/logout", text: "" },
                             on: {
                               click: function($event) {
@@ -39047,7 +39053,7 @@ var render = function() {
             attrs: {
               app: "",
               src: "/img/nav1.png",
-              "overlay-opacity": "70",
+              "overlay-opacity": "50",
               absolute: "",
               dark: ""
             },
@@ -39297,46 +39303,46 @@ var render = function() {
     { attrs: { id: "app" } },
     [
       _c(
-        "v-app",
+        "v-content",
         [
-          _c("v-content", [
-            _c(
-              "table",
-              { staticClass: "table table-bordered" },
-              [
-                _c("tr", [
-                  _c("th", [_vm._v("id")]),
+          _c(
+            "v-card",
+            [
+              _c(
+                "v-card-title",
+                [
+                  _vm._v("\n                Equipment List\n                "),
+                  _c("v-spacer"),
                   _vm._v(" "),
-                  _c("th", [_vm._v("Name")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Qty")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Lab")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Created At")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Updated At")])
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.equip, function(e) {
-                  return _c("tr", [
-                    _c("td", [_vm._v(_vm._s(e.Equip_id))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(e.Equip_Name))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(e.Equip_Num))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(e.Lab_id))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(e.created_at))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(e.updated_at))])
-                  ])
-                })
-              ],
-              2
-            )
-          ])
+                  _c("v-text-field", {
+                    attrs: {
+                      "append-icon": "search",
+                      label: "Search",
+                      "single-line": "",
+                      "hide-details": ""
+                    },
+                    model: {
+                      value: _vm.search,
+                      callback: function($$v) {
+                        _vm.search = $$v
+                      },
+                      expression: "search"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-data-table", {
+                attrs: {
+                  headers: _vm.headers,
+                  items: _vm.equip,
+                  search: _vm.search
+                }
+              })
+            ],
+            1
+          )
         ],
         1
       )

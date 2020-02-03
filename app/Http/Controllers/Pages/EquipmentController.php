@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pages;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class EquipmentController extends Controller
@@ -20,7 +21,7 @@ class EquipmentController extends Controller
 
     public function index()
     {
-        return view('equipment');
+        return view('pages/equipment');
     }
 
     /**

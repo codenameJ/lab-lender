@@ -3,7 +3,7 @@
     <nav>
       <v-toolbar flat>
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-toolbar-title>Lab Lender</v-toolbar-title>
+        <v-toolbar-title><span>Lab Lender</span></v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon>
           <v-icon>mdi-magnify</v-icon>
@@ -20,14 +20,6 @@
             </v-btn>
           </template>
 
-          <!-- <v-list>
-            <v-list-item
-              v-for="item in useritems"
-              :key="item.title">
-                  <v-list-item-title><a class="userhref" :href="item.href">{{ item.title }}</a></v-list-item-title>
-            </v-list-item>
-          </v-list>  อันเก่า -->
-
           <v-card>
           <v-list>
             <v-list-item>
@@ -36,7 +28,7 @@
               </v-list-item-avatar>
   
               <v-list-item-content>
-                <v-list-item-title>Tanawit Prasertsak</v-list-item-title>
+                <v-list-item-title>{{username}}</v-list-item-title>
                 <v-list-item-subtitle>Student</v-list-item-subtitle>
               </v-list-item-content>
   
@@ -50,25 +42,19 @@
           <v-card-actions>
             <v-spacer></v-spacer>
   
-            <v-btn style="text-decoration : none; color : #000000;" href='/logout' text @click="menu = false">Log out</v-btn>
+            <v-btn class="userhref" href='/logout' text @click="menu = false">Log out</v-btn>
           </v-card-actions>
         </v-card>
 
-              <!-- <v-list>
-                <span>
-                <a href="/logout">Logout</a>
-              </span>
-              </v-list> -->
 
         </v-menu>
       </v-toolbar>
 
-    <v-navigation-drawer
-      app
+    <v-navigation-drawer app
       v-model="drawer"
       class="background-gradient"
       src="/img/nav1.png"
-      overlay-opacity=70
+      overlay-opacity=50
       absolute
       dark>
         <v-list-item>
@@ -134,7 +120,6 @@
                   </v-list-item-content>
                   </v-list-item>
                   </v-list-group>
-
                   <v-list-item
                     v-else
                     :key="item.text"
@@ -160,6 +145,10 @@
 
 <script>
 export default {
+    props: ['username'],
+    mounted () {
+      console.log(this.username)
+    },
     name: "Header",
     components: {},
     data: () => ({
@@ -194,13 +183,13 @@ export default {
                 icon: "assignment",
                 "icon-alt": "assignment",
                 text: "คำขอยืม",
-                href: "/reports/summarize"
+                href: "/request"
             },
             {
                 icon: "history",
                 "icon-alt": "history",
                 text: "ประวัติ",
-                href: "/reports/summarize"
+                href: "/history"
             },
             {
                 icon: "group",
@@ -209,11 +198,11 @@ export default {
                 children: [
                     {
                         text: "นักศึกษา",
-                        route: "/reports/summarize"
+                        route: "/user/student"
                     },
                     {
                         text: "ผู้ช่วยสอน (TA)",
-                        route: "/reports/daily"
+                        route: "/user/ta"
                     }
                 ]
             }
