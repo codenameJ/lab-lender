@@ -19,6 +19,9 @@ Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout'); // logout
 
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/equipment', 'EquipmentController@index')->name('equipment');
-
+Route::get('/home', 'Pages\HomeController@index')->name('home');
+Route::get('/equipment', 'Pages\EquipmentController@index')->name('equipment');
+Route::get('/admin', 'Pages\adminController@index')->name('admin');
+Route::get('/announcement', 'Pages\AnnouncementController@index')->name('announcement');
+Route::get('/history', 'Pages\HistoryController@index')->name('history');
+Route::get('/request', 'Pages\RequestController@index')->name('request');

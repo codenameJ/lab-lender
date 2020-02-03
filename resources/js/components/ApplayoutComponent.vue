@@ -180,6 +180,10 @@
 
 <script>
 export default {
+    props: ['username'],
+    mounted () {
+      console.log(this.username)
+    },
     name: "Header",
     components: {},
     data: () => ({
@@ -214,13 +218,13 @@ export default {
                 icon: "assignment",
                 "icon-alt": "assignment",
                 text: "คำขอยืม",
-                href: "/reports/summarize"
+                href: "/request"
             },
             {
                 icon: "history",
                 "icon-alt": "history",
                 text: "ประวัติ",
-                href: "/reports/summarize"
+                href: "/history"
             },
             {
                 icon: "group",
@@ -229,11 +233,11 @@ export default {
                 children: [
                     {
                         text: "นักศึกษา",
-                        route: "/reports/summarize"
+                        route: "/user/student"
                     },
                     {
                         text: "ผู้ช่วยสอน (TA)",
-                        route: "/reports/daily"
+                        route: "/user/ta"
                     }
                 ]
             }
