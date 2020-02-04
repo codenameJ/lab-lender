@@ -23,6 +23,7 @@
             font-weight: 200;
             height: 100vh;
             margin: 0;
+            background-size: 100%;
         }
 
         .full-height {
@@ -70,7 +71,6 @@
 </head>
 
 <body>
-    
     <div class="flex-center position-ref full-height">
         @if (Route::has('login'))
         <div class="top-right links">

@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.reglogin')
 
 @section('content')
+<body>
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-12">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+
+            <div class="card elevation-12">
+                <div class="card-header button-btn-gradient" style="text-decoration : none; color : #FFFFFF; ">{{ __('Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -53,7 +55,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-light button-btn-gradient" style="text-decoration : none; color : #FFFFFF; ">
                                     {{ __('Login') }}
                                 </button>
 
@@ -70,4 +72,24 @@
         </div>
     </div>
 </div>
+</body>
 @endsection
+
+<style scoped>
+    html,
+    body {
+            background-image: url(/img/welcome-bg.png);
+            color: #636b6f;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 200;
+            height: 100vh;
+            margin: 0;
+            background-size: 100%;
+        }
+    .button-btn-gradient {
+        background-color: #0c0b0b;
+        background-image: linear-gradient(to bottom, #2ad4d9, #2ad4a9);
+          font-weight: bold;
+    }
+    
+</style>
