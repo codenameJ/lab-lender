@@ -2197,7 +2197,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['username'],
   mounted: function mounted() {
@@ -39494,10 +39493,7 @@ var render = function() {
                                     [
                                       _c(
                                         "v-list-item-title",
-                                        {
-                                          staticClass: "text-sub-menu mr-3",
-                                          attrs: { href: item.href }
-                                        },
+                                        { staticClass: "text-sub-menu mr-3" },
                                         [
                                           _vm._v(
                                             "\n                                        " +
