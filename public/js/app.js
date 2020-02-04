@@ -2242,29 +2242,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2293,7 +2270,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log("OK");
     this.getEquipData();
   },
   methods: {
@@ -2301,12 +2277,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       axios.get("api/equipment").then(function (Response) {
-        _this.equip = Response.data;
+        _this.equips = Response.data;
+        console.log(_this.equips);
       });
     }
   },
   data: function data() {
-    return _defineProperty({
+    return {
       search: "",
       headers: [{
         text: "ID",
@@ -2315,29 +2292,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         text: "Equip_Name",
         align: "left",
         sortable: false,
-        value: "name"
+        value: "Equip_Name"
       }, {
         text: "Qty",
-        value: "Equip_num"
+        value: "Equip_Num"
       }, {
         text: "Lab",
         value: "Lab_id"
-      }, {
-        text: "Created at",
-        value: "created_at"
-      }, {
-        text: "Updated at",
-        value: "updated_at"
       }],
-      equip: []
-    }, "equip", {
-      Equip_id: 0,
-      Equip_Name: "",
-      Equip_num: "",
-      Lab_id: "",
-      created_at: "",
-      updated_at: ""
-    });
+      equips: []
+    };
+  },
+  computed: {
+    filterEquip: function filterEquip() {
+      var _this2 = this;
+
+      return this.equips.filter(function (eq) {
+        return eq.Equip_Name.match(_this2.search);
+      });
+    }
   }
 });
 
@@ -39334,11 +39307,8 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("v-data-table", {
-                attrs: {
-                  headers: _vm.headers,
-                  items: _vm.equip,
-                  search: _vm.search
-                }
+                staticClass: "elevation-1",
+                attrs: { headers: _vm.headers, items: _vm.filterEquip }
               })
             ],
             1

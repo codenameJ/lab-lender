@@ -1,27 +1,5 @@
 <template>
     <div id="app">
-        <!-- <v-app>
-            <v-content>
-                <table class="table table-bordered">
-               <tr>
-                   <th>id</th>
-                   <th>Name</th>
-                   <th>Qty</th>
-                   <th>Lab</th>
-                   <th>Created At</th>
-                   <th>Updated At</th>
-               </tr>
-               <tr v-for="e in equip">
-                   <td>{{e.Equip_id}}</td>
-                   <td>{{e.Equip_Name}}</td>
-                   <td>{{e.Equip_Num}}</td>
-                   <td>{{e.Lab_id}}</td>
-                   <td>{{e.created_at}}</td>
-                   <td>{{e.updated_at}}</td>
-               </tr>
-               </table>
-            </v-content>
-        </v-app> -->
         <v-content>
             <v-card>
                 <v-card-title>
@@ -37,9 +15,10 @@
                 </v-card-title>
                 <v-data-table
                     :headers="headers"
-                    :items="equip"
-                    :search="search"
-                ></v-data-table>
+                    :items="filterEquip"
+                    class="elevation-1"
+                >
+                </v-data-table>
             </v-card>
         </v-content>
     </div>
@@ -48,13 +27,13 @@
 <script>
 export default {
     mounted() {
-        console.log("OK");
         this.getEquipData();
     },
     methods: {
         getEquipData() {
             axios.get("api/equipment").then(Response => {
-                this.equip = Response.data;
+                this.equips = Response.data;
+                console.log(this.equips);
             });
         }
     },
@@ -67,23 +46,20 @@ export default {
                     text: "Equip_Name",
                     align: "left",
                     sortable: false,
-                    value: "name"
+                    value: "Equip_Name"
                 },
-                { text: "Qty", value: "Equip_num" },
-                { text: "Lab", value: "Lab_id" },
-                { text: "Created at", value: "created_at" },
-                { text: "Updated at", value: "updated_at" }
+                { text: "Qty", value: "Equip_Num" },
+                { text: "Lab", value: "Lab_id" }
             ],
-            equip: [],
-            equip: {
-                Equip_id: 0,
-                Equip_Name: "",
-                Equip_num: "",
-                Lab_id: "",
-                created_at: "",
-                updated_at: ""
-            }
+            equips: []
         };
+    },
+    computed: {
+        filterEquip: function() {
+            return this.equips.filter(eq => {
+                return eq.Equip_Name.match(this.search);
+            });
+        }
     }
 };
 </script>
