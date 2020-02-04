@@ -2287,9 +2287,12 @@ __webpack_require__.r(__webpack_exports__);
       search: "",
       headers: [{
         text: "ID",
+        value: "id"
+      }, {
+        text: "Equip ID",
         value: "Equip_id"
       }, {
-        text: "Equip_Name",
+        text: "Equip Name",
         align: "left",
         sortable: false,
         value: "Equip_Name"
@@ -2299,6 +2302,12 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: "Lab",
         value: "Lab_id"
+      }, {
+        text: "created at",
+        value: "created_at"
+      }, {
+        text: "updated at",
+        value: "updated_at"
       }],
       equips: []
     };

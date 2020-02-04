@@ -41,15 +41,18 @@ export default {
         return {
             search: "",
             headers: [
-                { text: "ID", value: "Equip_id" },
+                { text: "ID", value: "id" },
+                { text: "Equip ID", value: "Equip_id" },
                 {
-                    text: "Equip_Name",
+                    text: "Equip Name",
                     align: "left",
                     sortable: false,
                     value: "Equip_Name"
                 },
                 { text: "Qty", value: "Equip_Num" },
-                { text: "Lab", value: "Lab_id" }
+                { text: "Lab", value: "Lab_id" },
+                { text: "created at", value: "created_at" },
+                { text: "updated at", value: "updated_at" }
             ],
             equips: []
         };
