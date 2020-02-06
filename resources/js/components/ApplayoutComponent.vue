@@ -82,10 +82,10 @@
 
                                 <v-list-item-content>
                                     <v-list-item-title
-                                        >Tanawit Prasertsak</v-list-item-title
+                                        >{{username}}</v-list-item-title
                                     >
                                     <v-list-item-subtitle
-                                        >Student</v-list-item-subtitle
+                                        >{{type}}</v-list-item-subtitle
                                     >
                                 </v-list-item-content>
                             </v-list-item>
@@ -224,7 +224,7 @@
 
 <script>
 export default {
-    props: ["username"],
+    props: ["username", "type"],
     mounted() {
         console.log(this.username);
     },

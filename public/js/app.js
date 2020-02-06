@@ -2242,7 +2242,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["username"],
+  props: ["username", "type"],
   mounted: function mounted() {
     console.log(this.username);
   },
@@ -40005,10 +40005,12 @@ var render = function() {
                               "v-list-item-content",
                               [
                                 _c("v-list-item-title", [
-                                  _vm._v("Tanawit Prasertsak")
+                                  _vm._v(_vm._s(_vm.username))
                                 ]),
                                 _vm._v(" "),
-                                _c("v-list-item-subtitle", [_vm._v("Student")])
+                                _c("v-list-item-subtitle", [
+                                  _vm._v(_vm._s(_vm.type))
+                                ])
                               ],
                               1
                             )
