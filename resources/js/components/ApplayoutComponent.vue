@@ -144,7 +144,7 @@
                                     <v-list-item-title
                                         class="text-sub-menu mr-3"
                                     >
-                                        &nbsp&nbsp&nbsp&nbsp{{ child.text }}
+                                        &nbsp&nbsp&nbsp&nbsp<a class="menuhref" :href="child.route">{{ child.text }}</a>
                                     </v-list-item-title>
                                 </v-list-item-content>
                             </v-list-item>
@@ -233,7 +233,7 @@ export default {
                 children: [
                     {
                         text: "ผู้ใช้งานทั้งหมด",
-                        route: "/user/allusers"
+                        route: "/user"
                     },
                     {
                         text: "นักศึกษา",
