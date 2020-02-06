@@ -2248,7 +2248,7 @@ __webpack_require__.r(__webpack_exports__);
         text: "จัดการผู้ใช้งาน",
         children: [{
           text: "ผู้ใช้งานทั้งหมด",
-          route: "/user/allusers"
+          route: "/user"
         }, {
           text: "นักศึกษา",
           route: "/user/student"
@@ -40055,9 +40055,15 @@ var render = function() {
                                         { staticClass: "text-sub-menu mr-3" },
                                         [
                                           _vm._v(
-                                            "\n                                        " +
-                                              _vm._s(child.text) +
-                                              "\n                                "
+                                            "\n                                        "
+                                          ),
+                                          _c(
+                                            "a",
+                                            {
+                                              staticClass: "menuhref",
+                                              attrs: { href: child.route }
+                                            },
+                                            [_vm._v(_vm._s(child.text))]
                                           )
                                         ]
                                       )

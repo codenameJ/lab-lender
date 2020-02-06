@@ -25,6 +25,6 @@ Route::get('/admin', 'Pages\adminController@index')->name('admin');
 Route::get('/announcement', 'Pages\AnnouncementController@index')->name('announcement');
 Route::get('/history', 'Pages\HistoryController@index')->name('history');
 Route::get('/request', 'Pages\RequestController@index')->name('request');
-Route::get('/student', 'Pages\StudentController@index')->name('student');
-Route::get('/ta', 'Pages\TaController@index')->name('ta');
+Route::get('/user/student', 'Pages\StudentController@index')->name('student');
+Route::get('/user/ta', 'Pages\TaController@index')->name('ta');
 Route::get('/user', 'Pages\UserController@index')->name('user');
