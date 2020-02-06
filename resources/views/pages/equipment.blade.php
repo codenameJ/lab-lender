@@ -2,5 +2,6 @@
 
 @section('content')
         <!-- <equipment></equipment> -->
-        <equipment-ta></equipment-ta>
+        <equipment-admin></equipment-admin>
+        <!-- <eqcom></eqcom> -->
 @endsection
