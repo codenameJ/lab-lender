@@ -2197,8 +2197,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['username'],
+  props: ["username"],
   mounted: function mounted() {
     console.log(this.username);
   },
@@ -39795,9 +39839,95 @@ var render = function() {
             ),
             _vm._v(" "),
             _c(
-              "v-btn",
-              { attrs: { icon: "" } },
-              [_c("v-icon", [_vm._v("shopping_cart")])],
+              "v-menu",
+              {
+                attrs: { bottom: "", left: "" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "activator",
+                    fn: function(ref) {
+                      var on = ref.on
+                      return [
+                        _c(
+                          "v-btn",
+                          _vm._g({ attrs: { icon: "" } }, on),
+                          [_c("v-icon", [_vm._v("shopping_cart")])],
+                          1
+                        )
+                      ]
+                    }
+                  }
+                ])
+              },
+              [
+                _vm._v(" "),
+                _c(
+                  "v-card",
+                  [
+                    _c(
+                      "v-list",
+                      [
+                        _c(
+                          "h5",
+                          { staticClass: "mt-2", attrs: { align: "center" } },
+                          [
+                            _vm._v(
+                              "\n                            Lending cart  "
+                            ),
+                            _c("v-icon", [_vm._v("shopping_cart")])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("v-divider"),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-item",
+                          [
+                            _c(
+                              "v-list-item-content",
+                              [
+                                _c("v-list-item-title", [
+                                  _vm._v(
+                                    "เซนเซอร์แสง (Light\n                                    Sensor)"
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("v-list-item-subtitle", [_vm._v("x 1 ชิ้น")])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _c("v-divider"),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-item",
+                          [
+                            _c(
+                              "v-list-item-content",
+                              [
+                                _c("v-list-item-title", [
+                                  _vm._v(
+                                    "เซนเซอร์หี (Hee\n                                    Sensor)"
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("v-list-item-subtitle", [_vm._v("x 7 ชิ้น")])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
               1
             ),
             _vm._v(" "),
@@ -40047,29 +40177,29 @@ var render = function() {
                                     1
                                   ),
                                   _vm._v(" "),
-                                  _c(
-                                    "v-list-item-content",
-                                    [
-                                      _c(
-                                        "v-list-item-title",
-                                        { staticClass: "text-sub-menu mr-3" },
-                                        [
-                                          _vm._v(
-                                            "\n                                        "
-                                          ),
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass: "menuhref",
-                                              attrs: { href: child.route }
-                                            },
-                                            [_vm._v(_vm._s(child.text))]
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  )
+                                  _c("v-list-item-content", [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "menuhref",
+                                        attrs: { href: child.route }
+                                      },
+                                      [
+                                        _c(
+                                          "v-list-item-title",
+                                          { staticClass: "text-sub-menu mr-3" },
+                                          [
+                                            _vm._v(
+                                              "\n                                            " +
+                                                _vm._s(child.text) +
+                                                "\n                                    "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ])
                                 ],
                                 1
                               )
@@ -40099,29 +40229,32 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _c(
-                              "v-list-item-content",
-                              [
-                                _c(
-                                  "v-list-item-title",
-                                  {
-                                    staticClass: "text-menu",
-                                    staticStyle: { "font-size": "1.1em" }
-                                  },
-                                  [
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "menuhref",
-                                        attrs: { href: item.href }
-                                      },
-                                      [_vm._v(_vm._s(item.text))]
-                                    )
-                                  ]
-                                )
-                              ],
-                              1
-                            )
+                            _c("v-list-item-content", [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "menuhref",
+                                  attrs: { href: item.href }
+                                },
+                                [
+                                  _c(
+                                    "v-list-item-title",
+                                    {
+                                      staticClass: "text-menu",
+                                      staticStyle: { "font-size": "1.1em" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    " +
+                                          _vm._s(item.text) +
+                                          "\n                                "
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ])
                           ],
                           1
                         )

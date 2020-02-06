@@ -10,9 +10,51 @@
                 <v-btn icon>
                     <v-icon>notifications</v-icon>
                 </v-btn>
-                <v-btn icon>
-                    <v-icon>shopping_cart</v-icon>
-                </v-btn>
+
+                <v-menu bottom left>
+                    <template v-slot:activator="{ on }">
+                        <v-btn icon v-on="on">
+                            <v-icon>shopping_cart</v-icon>
+                        </v-btn>
+                    </template>
+                    <v-card>
+                        <v-list>
+                            <h5 class="mt-2" align="center">
+                                Lending cart  <v-icon>shopping_cart</v-icon>
+                            </h5>
+                            <v-divider></v-divider>
+                            <v-list-item>
+                                <!-- <v-list-item-avatar>
+                                    <img
+                                        src="https://cdn.vuetifyjs.com/images/john.jpg"
+                                        alt="John"
+                                    />
+                                </v-list-item-avatar> -->
+
+                                <v-list-item-content>
+                                    <v-list-item-title
+                                        >เซนเซอร์แสง (Light
+                                        Sensor)</v-list-item-title
+                                    >
+                                    <v-list-item-subtitle
+                                        >x 1 ชิ้น</v-list-item-subtitle
+                                    >
+                                </v-list-item-content> </v-list-item><v-divider> </v-divider>
+                            <v-list-item>
+                                <v-list-item-content>
+                                    <v-list-item-title
+                                        >เซนเซอร์หี (Hee
+                                        Sensor)</v-list-item-title
+                                    >
+                                    <v-list-item-subtitle
+                                        >x 7 ชิ้น</v-list-item-subtitle
+                                    >
+                                </v-list-item-content>
+                            </v-list-item>
+                        </v-list>
+                    </v-card>
+                </v-menu>
+
                 <v-menu bottom left>
                     <template v-slot:activator="{ on }">
                         <v-btn icon v-on="on">
@@ -141,11 +183,13 @@
                                     </v-icon>
                                 </v-list-item-action>
                                 <v-list-item-content>
-                                    <v-list-item-title
-                                        class="text-sub-menu mr-3"
-                                    >
-                                        &nbsp&nbsp&nbsp&nbsp<a class="menuhref" :href="child.route">{{ child.text }}</a>
-                                    </v-list-item-title>
+                                    <a class="menuhref" :href="child.route">
+                                        <v-list-item-title
+                                            class="text-sub-menu mr-3"
+                                        >
+                                            &nbsp&nbsp&nbsp&nbsp{{ child.text }}
+                                        </v-list-item-title>
+                                    </a>
                                 </v-list-item-content>
                             </v-list-item>
                         </v-list-group>
@@ -161,14 +205,14 @@
                                 <v-icon class="mr-3">{{ item.icon }}</v-icon>
                             </v-list-item-action>
                             <v-list-item-content>
-                                <v-list-item-title
-                                    class="text-menu"
-                                    style="font-size:1.1em"
-                                >
-                                    <a class="menuhref" :href="item.href">{{
-                                        item.text
-                                    }}</a>
-                                </v-list-item-title>
+                                <a class="menuhref" :href="item.href">
+                                    <v-list-item-title
+                                        class="text-menu"
+                                        style="font-size:1.1em"
+                                    >
+                                        {{ item.text }}
+                                    </v-list-item-title>
+                                </a>
                             </v-list-item-content>
                         </v-list-item>
                     </template>
@@ -180,9 +224,9 @@
 
 <script>
 export default {
-    props: ['username'],
-    mounted () {
-      console.log(this.username)
+    props: ["username"],
+    mounted() {
+        console.log(this.username);
     },
     name: "Header",
     components: {},
@@ -250,7 +294,7 @@ export default {
     computed: {
         isMobile() {
             return window.innerWidth < 600;
-        },
+        }
     },
 
     watch: {},
