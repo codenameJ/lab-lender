@@ -39549,14 +39549,14 @@ var render = function() {
             _c(
               "v-btn",
               { attrs: { icon: "" } },
-              [_c("v-icon", [_vm._v("mdi-magnify")])],
+              [_c("v-icon", [_vm._v("notifications")])],
               1
             ),
             _vm._v(" "),
             _c(
               "v-btn",
               { attrs: { icon: "" } },
-              [_c("v-icon", [_vm._v("mdi-dots-vertical")])],
+              [_c("v-icon", [_vm._v("shopping_cart")])],
               1
             ),
             _vm._v(" "),
