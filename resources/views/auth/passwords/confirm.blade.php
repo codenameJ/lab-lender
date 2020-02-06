@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+                <div class="card-header button-btn-gradient" style="text-decoration : none; color : #FFFFFF; ">{{ __('Confirm Password') }}</div>
 
                 <div class="card-body">
                     {{ __('Please confirm your password before continuing.') }}
@@ -29,7 +29,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-light button-btn-gradient" style="text-decoration : none; color : #FFFFFF; ">
                                     {{ __('Confirm Password') }}
                                 </button>
 
@@ -47,3 +47,11 @@
     </div>
 </div>
 @endsection
+
+<style scoped>
+    .button-btn-gradient {
+        background-color: #0c0b0b;
+        background-image: linear-gradient(to bottom, #2ad4d9, #2ad4a9);
+        font-weight: bold;
+    }
+</style>

@@ -28,7 +28,13 @@ Vue.component('user-admin', require('./components/UserComponent.vue').default);
 
 Vue.component('welcome-card', require('./components/WelcomeCard.vue').default);
 
+Vue.component('announce-add', require('./components/AnnounceAddComponent.vue').default);
+Vue.component('announce-show', require('./components/AnnounceShowComponent.vue').default);
 
+Vue.component('home-card', require('./components/Home_card.vue').default);
+Vue.component('home-alert', require('./components/Home_alert.vue').default);
+
+Vue.component('footer-lab', require('./components/FooterComponent.vue').default);
 
 
 const app = new Vue({
