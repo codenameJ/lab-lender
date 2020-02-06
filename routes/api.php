@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('equipment','Api\EquipmentController');
+Route::resource('user','Api\UserController');
+Route::resource('lab','Api\LabController');

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Equipment;
+use App\user;
 
-class EquipmentController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        $equipments = Equipment::all();
-        return response()->json($equipments);
+        $users = User::all();
+        return response()->json($users);
     }
 
     /**
@@ -38,19 +38,21 @@ class EquipmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Equip_id'=>'required',
-            'Equip_Name'=>'required',
-            'Equip_Num'=>'required',
-            'Lab_id'=>'required',
+            'Name'=>'required',
+            'Email'=>'required',
+            'Phone'=>'required',
+            'Password'=>'required',
+            'Activation'=>'required',
          ]);
-         $equipment = Equipment::create([
-             'Equip_id'=> $request->Equip_id,
-             'Equip_Name'=> $request->Equip_Name,
-             'Equip_Num'=> $request->Equip_Num,
-             'Lab_id'=> $request->Lab_id,
+         $user = User::create([
+             'Name'=> $request->Name,
+             'Email'=> $request->Email,
+             'Phone'=> $request->Phone,
+             'Password'=> bcrypt($request->Password),
+             'Activation'=> $request->Activation,
          ]);
  
-         return response(['message'=>'Equipment Added', 'equipment'=>$equipment]);
+         return response(['message'=>'User Added', 'user'=>$user]);
     }
 
     /**
@@ -82,23 +84,22 @@ class EquipmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipment $equipment)
+    public function update(Request $request, User $user)
     {
         $request->validate([
-            'Equip_id'=>'required',
-            'Equip_Name'=>'required',
-            'Equip_Num'=>'required',
-            'Lab_id'=>'required',
-        ]);
-
-        $equipment->update([
-            'Equip_id'=> $request->Equip_id,
-             'Equip_Name'=> $request->Equip_Name,
-             'Equip_Num'=> $request->Equip_Num,
-             'Lab_id'=> $request->Lab_id,
-        ]);
-
-        return response(['message'=>'User Updated', 'equipment'=>$equipment]);
+            'Name'=>'required',
+            'Email'=>'required',
+            'Phone'=>'required',
+            'Activation'=>'required',
+         ]);
+         $user = User::create([
+             'Name'=> $request->Name,
+             'Email'=> $request->Email,
+             'Phone'=> $request->Phone,
+             'Activation'=> $request->Activation,
+         ]);
+ 
+         return response(['message'=>'User Updated', 'user'=>$user]);
     }
 
     /**
@@ -109,6 +110,6 @@ class EquipmentController extends Controller
      */
     public function destroy($id)
     {
-        return Equipment::destroy($id);
+        return User::destroy($id);
     }
 }

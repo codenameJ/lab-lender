@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pages;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Ex extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class Ex extends Controller
      */
     public function index()
     {
-        return view('ex');
+        return view('pages/user');
     }
 
     /**
