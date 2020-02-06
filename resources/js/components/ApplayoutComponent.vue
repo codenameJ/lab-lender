@@ -232,6 +232,10 @@ export default {
                 text: "จัดการผู้ใช้งาน",
                 children: [
                     {
+                        text: "ผู้ใช้งานทั้งหมด",
+                        route: "/user/allusers"
+                    },
+                    {
                         text: "นักศึกษา",
                         route: "/user/student"
                     },

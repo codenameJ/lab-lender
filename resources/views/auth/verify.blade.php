@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                <div class="card-header button-btn-gradient" style="text-decoration : none; color : #FFFFFF; ">{{ __('Verify Your Email Address') }}</div>
 
                 <div class="card-body">
                     @if (session('resent'))
@@ -18,7 +18,7 @@
                     {{ __('If you did not receive the email') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline button-btn-gradient">{{ __('click here to request another') }}</button>.
                     </form>
                 </div>
             </div>
@@ -26,3 +26,11 @@
     </div>
 </div>
 @endsection
+
+<style scoped>
+    .button-btn-gradient {
+        background-color: #0c0b0b;
+        background-image: linear-gradient(to bottom, #2ad4d9, #2ad4a9);
+        font-weight: bold;
+    }
+</style>
