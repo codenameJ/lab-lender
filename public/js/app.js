@@ -3263,6 +3263,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.getUserData();
@@ -3286,6 +3311,9 @@ __webpack_require__.r(__webpack_exports__);
         text: "Phone",
         value: "Phone"
       }, {
+        text: "Type",
+        value: "Type"
+      }, {
         text: "Activation",
         value: "Activation"
       }, // { text: "created at", value: "created_at" },
@@ -3298,20 +3326,21 @@ __webpack_require__.r(__webpack_exports__);
       users: [],
       editedIndex: -1,
       editedItem: {
-        User_id: 0,
         Name: "",
         Email: "",
         Phone: 0,
+        Type: "",
         Activation: ""
       },
       defaultItem: {
-        User_id: 0,
         Name: "",
         Email: "",
         Phone: 0,
+        Type: "",
         Activation: ""
       },
-      selectactivation: ['Yes', 'No'] // },
+      selectactivation: ["Yes", "No"],
+      selecttype: ["student", "ta", "admin"] // },
 
     };
   },
@@ -3372,11 +3401,10 @@ __webpack_require__.r(__webpack_exports__);
           return console.log(response.data);
         });
       } else {
-        // this.users.push(this.editedItem);
+        this.users.push(this.editedItem);
         axios.post("api/user", this.editedItem).then(function (response) {
           return console.log(response.data);
-        });
-        location.reload();
+        }); // location.reload();
       }
 
       this.close();
@@ -41568,7 +41596,7 @@ var render = function() {
                                                       )
                                                     },
                                                     expression:
-                                                      "editedItem.Password"
+                                                      "\n                                                    editedItem.Password\n                                                "
                                                   }
                                                 })
                                               ],
@@ -41616,6 +41644,41 @@ var render = function() {
                                               [
                                                 _c("v-select", {
                                                   attrs: {
+                                                    items: _vm.selecttype,
+                                                    label: "Type",
+                                                    "item-text": "name",
+                                                    "return-object": "",
+                                                    chips: ""
+                                                  },
+                                                  model: {
+                                                    value: _vm.editedItem.Type,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.editedItem,
+                                                        "Type",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "\n                                                    editedItem.Type\n                                                "
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-col",
+                                              {
+                                                attrs: {
+                                                  cols: "12",
+                                                  sm: "6",
+                                                  md: "4"
+                                                }
+                                              },
+                                              [
+                                                _c("v-select", {
+                                                  attrs: {
                                                     items: _vm.selectactivation,
                                                     label: "Activation",
                                                     "item-text": "name",
@@ -41633,7 +41696,7 @@ var render = function() {
                                                       )
                                                     },
                                                     expression:
-                                                      "editedItem.Activation"
+                                                      "\n                                                    editedItem.Activation\n                                                "
                                                   }
                                                 })
                                               ],

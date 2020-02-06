@@ -43,6 +43,7 @@ class UserController extends Controller
             'Phone'=>'required',
             'Password'=>'required',
             'Activation'=>'required',
+            'Type'=>'required',
          ]);
          $user = User::create([
              'Name'=> $request->Name,
@@ -50,6 +51,7 @@ class UserController extends Controller
              'Phone'=> $request->Phone,
              'Password'=> bcrypt($request->Password),
              'Activation'=> $request->Activation,
+             'Type'=> $request->Type,
          ]);
  
          return response(['message'=>'User Added', 'user'=>$user]);
@@ -92,7 +94,7 @@ class UserController extends Controller
             'Phone'=>'required',
             'Activation'=>'required',
          ]);
-         $user = User::create([
+         $user->update([
              'Name'=> $request->Name,
              'Email'=> $request->Email,
              'Phone'=> $request->Phone,

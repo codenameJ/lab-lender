@@ -33,26 +33,38 @@
                                                     label="User ID"
                                                 ></v-text-field>
                                             </v-col> -->
+                                        <v-col cols="12" sm="6" md="4">
+                                            <v-text-field
+                                                v-model="editedItem.Name"
+                                                label="User Name"
+                                            ></v-text-field>
+                                        </v-col>
+                                        <v-col cols="12" sm="6" md="4">
+                                            <v-text-field
+                                                v-model="editedItem.Email"
+                                                label="E-mail"
+                                            ></v-text-field>
+                                        </v-col>
+                                        <v-row>
                                             <v-col cols="12" sm="6" md="4">
                                                 <v-text-field
-                                                    v-model="editedItem.Name"
-                                                    label="User Name"
-                                                ></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="4">
-                                                <v-text-field
-                                                    v-model="editedItem.Email"
-                                                    label="E-mail"
-                                                ></v-text-field>
-                                            </v-col>
-                                            <v-row>
-                                            <v-col cols="12" sm="6" md="4">
-                                                <v-text-field
-                                                    v-model="editedItem.Password"
+                                                    v-model="
+                                                        editedItem.Password
+                                                    "
                                                     label="Password"
-                                                    :type="value ? 'password' : 'text'"
-                                                    :append-icon="value ? 'visibility' : 'visibility_off'"
-                                                    @click:append="() => (value = !value)"
+                                                    :type="
+                                                        value
+                                                            ? 'password'
+                                                            : 'text'
+                                                    "
+                                                    :append-icon="
+                                                        value
+                                                            ? 'visibility'
+                                                            : 'visibility_off'
+                                                    "
+                                                    @click:append="
+                                                        () => (value = !value)
+                                                    "
                                                 ></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="4">
@@ -61,10 +73,23 @@
                                                     label="Phone"
                                                 ></v-text-field>
                                             </v-col>
-
                                             <v-col cols="12" sm="6" md="4">
                                                 <v-select
-                                                    v-model="editedItem.Activation"
+                                                    v-model="
+                                                        editedItem.Type
+                                                    "
+                                                    :items="selecttype"
+                                                    label="Type"
+                                                    item-text="name"
+                                                    return-object
+                                                    chips
+                                                ></v-select>
+                                            </v-col>
+                                            <v-col cols="12" sm="6" md="4">
+                                                <v-select
+                                                    v-model="
+                                                        editedItem.Activation
+                                                    "
                                                     :items="selectactivation"
                                                     label="Activation"
                                                     item-text="name"
@@ -131,6 +156,7 @@ export default {
                 value: "Email"
             },
             { text: "Phone", value: "Phone" },
+            { text: "Type", value: "Type" },
             { text: "Activation", value: "Activation" },
             // { text: "created at", value: "created_at" },
             // { text: "updated at", value: "updated_at" },
@@ -139,20 +165,21 @@ export default {
         users: [],
         editedIndex: -1,
         editedItem: {
-            User_id: 0,
             Name: "",
             Email: "",
             Phone: 0,
-            Activation:"",
+            Type:"",
+            Activation: "",
         },
         defaultItem: {
-            User_id: 0,
             Name: "",
             Email: "",
             Phone: 0,
-            Activation:"",
+            Type:"",
+            Activation: "",
         },
-        selectactivation: ['Yes','No']
+        selectactivation: ["Yes", "No"],
+        selecttype: [ "student", "ta", "admin"],
         // },
     }),
 
@@ -216,12 +243,12 @@ export default {
                     .put("api/user/" + this.editedItem.User_id, this.editedItem)
                     .then(response => console.log(response.data));
             } else {
-                // this.users.push(this.editedItem);
+                this.users.push(this.editedItem);
                 axios
                     .post("api/user", this.editedItem)
                     .then(response => console.log(response.data));
 
-                location.reload();
+                // location.reload();
             }
             this.close();
         }
