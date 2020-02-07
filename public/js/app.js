@@ -2241,6 +2241,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["username", "type"],
   mounted: function mounted() {
@@ -3332,12 +3348,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.getUserData();
   },
   data: function data() {
     return {
+      valid: true,
+      emailRules: [function (v) {
+        return !!v || 'E-mail is required';
+      }, function (v) {
+        return /.+@.+\..+/.test(v) || 'E-mail must be valid';
+      }],
+      phoneRules: [function (v) {
+        return !!v || 'Phone number is required.';
+      }, function (v) {
+        return v && v.length <= 10 || 'Phone number must be valid';
+      }],
       // return {
       value: String,
       dialog: false,
@@ -3372,14 +3412,14 @@ __webpack_require__.r(__webpack_exports__);
       editedItem: {
         Name: "",
         Email: "",
-        Phone: 0,
+        Phone: "",
         Type: "",
         Activation: ""
       },
       defaultItem: {
         Name: "",
         Email: "",
-        Phone: 0,
+        Phone: "",
         Type: "",
         Activation: ""
       },
@@ -3409,6 +3449,11 @@ __webpack_require__.r(__webpack_exports__);
     this.getUserData();
   },
   methods: {
+    validate: function validate() {
+      if (this.$refs.form.validate()) {
+        this.snackbar = true;
+      }
+    },
     getUserData: function getUserData() {
       var _this2 = this;
 
@@ -39938,7 +39983,7 @@ var render = function() {
                               [
                                 _c("v-list-item-title", [
                                   _vm._v(
-                                    "เซนเซอร์หี (Hee\n                                    Sensor)"
+                                    "เซนเซอร์อินฟราเรด (Infrared\n                                    Sensor)"
                                   )
                                 ]),
                                 _vm._v(" "),
@@ -39948,6 +39993,31 @@ var render = function() {
                             )
                           ],
                           1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("v-divider"),
+                    _vm._v(" "),
+                    _c(
+                      "v-card-actions",
+                      [
+                        _c("v-spacer"),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "primary",
+                            staticStyle: { "text-decoration": "none" },
+                            attrs: { href: "/logout", text: "" },
+                            on: {
+                              click: function($event) {
+                                _vm.menu = false
+                              }
+                            }
+                          },
+                          [_vm._v("Confirm Order")]
                         )
                       ],
                       1
@@ -41631,69 +41701,24 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c(
-                                  "v-card-text",
+                                  "v-form",
+                                  {
+                                    ref: "form",
+                                    attrs: { "lazy-validation": "" },
+                                    model: {
+                                      value: _vm.valid,
+                                      callback: function($$v) {
+                                        _vm.valid = $$v
+                                      },
+                                      expression: "valid"
+                                    }
+                                  },
                                   [
                                     _c(
-                                      "v-container",
+                                      "v-card-text",
                                       [
                                         _c(
-                                          "v-col",
-                                          {
-                                            attrs: {
-                                              cols: "12",
-                                              sm: "6",
-                                              md: "4"
-                                            }
-                                          },
-                                          [
-                                            _c("v-text-field", {
-                                              attrs: { label: "User Name" },
-                                              model: {
-                                                value: _vm.editedItem.Name,
-                                                callback: function($$v) {
-                                                  _vm.$set(
-                                                    _vm.editedItem,
-                                                    "Name",
-                                                    $$v
-                                                  )
-                                                },
-                                                expression: "editedItem.Name"
-                                              }
-                                            })
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-col",
-                                          {
-                                            attrs: {
-                                              cols: "12",
-                                              sm: "6",
-                                              md: "4"
-                                            }
-                                          },
-                                          [
-                                            _c("v-text-field", {
-                                              attrs: { label: "E-mail" },
-                                              model: {
-                                                value: _vm.editedItem.Email,
-                                                callback: function($$v) {
-                                                  _vm.$set(
-                                                    _vm.editedItem,
-                                                    "Email",
-                                                    $$v
-                                                  )
-                                                },
-                                                expression: "editedItem.Email"
-                                              }
-                                            })
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-row",
+                                          "v-container",
                                           [
                                             _c(
                                               "v-col",
@@ -41707,133 +41732,222 @@ var render = function() {
                                               [
                                                 _c("v-text-field", {
                                                   attrs: {
-                                                    label: "Password",
-                                                    type: _vm.value
-                                                      ? "password"
-                                                      : "text",
-                                                    "append-icon": _vm.value
-                                                      ? "visibility"
-                                                      : "visibility_off"
+                                                    label: "User Name",
+                                                    required: ""
                                                   },
-                                                  on: {
-                                                    "click:append": function() {
-                                                      return (_vm.value = !_vm.value)
+                                                  model: {
+                                                    value: _vm.editedItem.Name,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.editedItem,
+                                                        "Name",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "editedItem.Name"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-col",
+                                              {
+                                                attrs: {
+                                                  cols: "12",
+                                                  sm: "6",
+                                                  md: "4"
+                                                }
+                                              },
+                                              [
+                                                _c("v-text-field", {
+                                                  attrs: {
+                                                    rules: _vm.emailRules,
+                                                    label: "E-mail",
+                                                    required: ""
+                                                  },
+                                                  model: {
+                                                    value: _vm.editedItem.Email,
+                                                    callback: function($$v) {
+                                                      _vm.$set(
+                                                        _vm.editedItem,
+                                                        "Email",
+                                                        $$v
+                                                      )
+                                                    },
+                                                    expression:
+                                                      "editedItem.Email"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-row",
+                                              [
+                                                _c(
+                                                  "v-col",
+                                                  {
+                                                    attrs: {
+                                                      cols: "12",
+                                                      sm: "6",
+                                                      md: "4"
                                                     }
                                                   },
-                                                  model: {
-                                                    value:
-                                                      _vm.editedItem.Password,
-                                                    callback: function($$v) {
-                                                      _vm.$set(
-                                                        _vm.editedItem,
-                                                        "Password",
-                                                        $$v
-                                                      )
-                                                    },
-                                                    expression:
-                                                      "\n                                                    editedItem.Password\n                                                "
-                                                  }
-                                                })
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-col",
-                                              {
-                                                attrs: {
-                                                  cols: "12",
-                                                  sm: "6",
-                                                  md: "4"
-                                                }
-                                              },
-                                              [
-                                                _c("v-text-field", {
-                                                  attrs: { label: "Phone" },
-                                                  model: {
-                                                    value: _vm.editedItem.Phone,
-                                                    callback: function($$v) {
-                                                      _vm.$set(
-                                                        _vm.editedItem,
-                                                        "Phone",
-                                                        $$v
-                                                      )
-                                                    },
-                                                    expression:
-                                                      "editedItem.Phone"
-                                                  }
-                                                })
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-col",
-                                              {
-                                                attrs: {
-                                                  cols: "12",
-                                                  sm: "6",
-                                                  md: "4"
-                                                }
-                                              },
-                                              [
-                                                _c("v-select", {
-                                                  attrs: {
-                                                    items: _vm.selecttype,
-                                                    label: "Type",
-                                                    "item-text": "name",
-                                                    "return-object": "",
-                                                    chips: ""
+                                                  [
+                                                    _c("v-text-field", {
+                                                      attrs: {
+                                                        label: "Password",
+                                                        type: _vm.value
+                                                          ? "password"
+                                                          : "text",
+                                                        "append-icon": _vm.value
+                                                          ? "visibility"
+                                                          : "visibility_off"
+                                                      },
+                                                      on: {
+                                                        "click:append": function() {
+                                                          return (_vm.value = !_vm.value)
+                                                        }
+                                                      },
+                                                      model: {
+                                                        value:
+                                                          _vm.editedItem
+                                                            .Password,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.$set(
+                                                            _vm.editedItem,
+                                                            "Password",
+                                                            $$v
+                                                          )
+                                                        },
+                                                        expression:
+                                                          "\n                                                    editedItem.Password\n                                                "
+                                                      }
+                                                    })
+                                                  ],
+                                                  1
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-col",
+                                                  {
+                                                    attrs: {
+                                                      cols: "12",
+                                                      sm: "6",
+                                                      md: "4"
+                                                    }
                                                   },
-                                                  model: {
-                                                    value: _vm.editedItem.Type,
-                                                    callback: function($$v) {
-                                                      _vm.$set(
-                                                        _vm.editedItem,
-                                                        "Type",
-                                                        $$v
-                                                      )
-                                                    },
-                                                    expression:
-                                                      "\n                                                    editedItem.Type\n                                                "
-                                                  }
-                                                })
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-col",
-                                              {
-                                                attrs: {
-                                                  cols: "12",
-                                                  sm: "6",
-                                                  md: "4"
-                                                }
-                                              },
-                                              [
-                                                _c("v-select", {
-                                                  attrs: {
-                                                    items: _vm.selectactivation,
-                                                    label: "Activation",
-                                                    "item-text": "name",
-                                                    "return-object": "",
-                                                    chips: ""
+                                                  [
+                                                    _c("v-text-field", {
+                                                      attrs: {
+                                                        counter: 10,
+                                                        rules: _vm.phoneRules,
+                                                        label: "Phone",
+                                                        type: "number"
+                                                      },
+                                                      model: {
+                                                        value:
+                                                          _vm.editedItem.Phone,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.$set(
+                                                            _vm.editedItem,
+                                                            "Phone",
+                                                            $$v
+                                                          )
+                                                        },
+                                                        expression:
+                                                          "editedItem.Phone"
+                                                      }
+                                                    })
+                                                  ],
+                                                  1
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-col",
+                                                  {
+                                                    attrs: {
+                                                      cols: "12",
+                                                      sm: "6",
+                                                      md: "4"
+                                                    }
                                                   },
-                                                  model: {
-                                                    value:
-                                                      _vm.editedItem.Activation,
-                                                    callback: function($$v) {
-                                                      _vm.$set(
-                                                        _vm.editedItem,
-                                                        "Activation",
-                                                        $$v
-                                                      )
-                                                    },
-                                                    expression:
-                                                      "\n                                                    editedItem.Activation\n                                                "
-                                                  }
-                                                })
+                                                  [
+                                                    _c("v-select", {
+                                                      attrs: {
+                                                        items: _vm.selecttype,
+                                                        label: "Type",
+                                                        "item-text": "name",
+                                                        "return-object": "",
+                                                        chips: ""
+                                                      },
+                                                      model: {
+                                                        value:
+                                                          _vm.editedItem.Type,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.$set(
+                                                            _vm.editedItem,
+                                                            "Type",
+                                                            $$v
+                                                          )
+                                                        },
+                                                        expression:
+                                                          "\n                                                    editedItem.Type\n                                                "
+                                                      }
+                                                    })
+                                                  ],
+                                                  1
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-col",
+                                                  {
+                                                    attrs: {
+                                                      cols: "12",
+                                                      sm: "6",
+                                                      md: "4"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("v-select", {
+                                                      attrs: {
+                                                        items:
+                                                          _vm.selectactivation,
+                                                        label: "Activation",
+                                                        "item-text": "name",
+                                                        "return-object": "",
+                                                        chips: ""
+                                                      },
+                                                      model: {
+                                                        value:
+                                                          _vm.editedItem
+                                                            .Activation,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.$set(
+                                                            _vm.editedItem,
+                                                            "Activation",
+                                                            $$v
+                                                          )
+                                                        },
+                                                        expression:
+                                                          "\n                                                    editedItem.Activation\n                                                "
+                                                      }
+                                                    })
+                                                  ],
+                                                  1
+                                                )
                                               ],
                                               1
                                             )
@@ -41868,6 +41982,7 @@ var render = function() {
                                       "v-btn",
                                       {
                                         attrs: {
+                                          disabled: !_vm.valid,
                                           color: "blue darken-1",
                                           text: ""
                                         },

@@ -24,6 +24,11 @@
                                     }}</span>
                                 </v-card-title>
 
+                                <v-form
+                                ref="form"
+                                v-model="valid"
+                                lazy-validation
+                                >
                                 <v-card-text>
                                     <v-container>
                                         <!-- <v-row>
@@ -37,12 +42,15 @@
                                             <v-text-field
                                                 v-model="editedItem.Name"
                                                 label="User Name"
+                                                required
                                             ></v-text-field>
                                         </v-col>
                                         <v-col cols="12" sm="6" md="4">
                                             <v-text-field
                                                 v-model="editedItem.Email"
+                                                :rules="emailRules"
                                                 label="E-mail"
+                                                required
                                             ></v-text-field>
                                         </v-col>
                                         <v-row>
@@ -70,7 +78,10 @@
                                             <v-col cols="12" sm="6" md="4">
                                                 <v-text-field
                                                     v-model="editedItem.Phone"
+                                                    :counter="10"
+                                                     :rules="phoneRules"
                                                     label="Phone"
+                                                    type="number"
                                                 ></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="4">
@@ -100,6 +111,7 @@
                                         </v-row>
                                     </v-container>
                                 </v-card-text>
+                                </v-form>
 
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
@@ -110,6 +122,7 @@
                                         >Cancel</v-btn
                                     >
                                     <v-btn
+                                        :disabled="!valid"
                                         color="blue darken-1"
                                         text
                                         @click="save"
@@ -142,6 +155,15 @@ export default {
         this.getUserData();
     },
     data: () => ({
+        valid: true,
+        emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
+      phoneRules: [
+        v => !!v || 'Phone number is required.',
+        v => (v && v.length <= 10) || 'Phone number must be valid',
+      ],
         // return {
         value: String,
         dialog: false,
@@ -167,14 +189,14 @@ export default {
         editedItem: {
             Name: "",
             Email: "",
-            Phone: 0,
+            Phone: "",
             Type:"",
             Activation: "",
         },
         defaultItem: {
             Name: "",
             Email: "",
-            Phone: 0,
+            Phone: "",
             Type:"",
             Activation: "",
         },
@@ -205,6 +227,12 @@ export default {
     },
 
     methods: {
+        validate () {
+        if (this.$refs.form.validate()) {
+          this.snackbar = true
+        }
+      },
+
         getUserData() {
             axios.get("api/user").then(Response => {
                 this.users = Response.data;

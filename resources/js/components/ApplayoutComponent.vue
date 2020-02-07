@@ -43,7 +43,7 @@
                             <v-list-item>
                                 <v-list-item-content>
                                     <v-list-item-title
-                                        >เซนเซอร์หี (Hee
+                                        >เซนเซอร์อินฟราเรด (Infrared
                                         Sensor)</v-list-item-title
                                     >
                                     <v-list-item-subtitle
@@ -52,6 +52,22 @@
                                 </v-list-item-content>
                             </v-list-item>
                         </v-list>
+
+                        <v-divider></v-divider>
+
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+
+                            <v-btn
+                                class="primary"
+                                style="text-decoration : none;"
+                                href="/logout"
+                                text
+                                @click="menu = false"
+                                >Confirm Order</v-btn
+                            >
+                        </v-card-actions>
+
                     </v-card>
                 </v-menu>
 
