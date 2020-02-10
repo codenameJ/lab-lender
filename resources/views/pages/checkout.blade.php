@@ -1,5 +1,5 @@
 @extends('layouts.layout')
 
 @section('content')
-<ta></ta>
+<checkout userid="{{ Auth::User()->User_id }}"></checkout>
 @endsection

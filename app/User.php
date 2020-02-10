@@ -45,4 +45,12 @@ class User extends Authenticatable
         return $this->Password;
     }
 
+    public function Ta(){
+        return $this->hasMany(Ta::class,'client_id');
+    }
+
+    public function Student(){
+        return $this->hasMany(Student::class,'client_id');
+    }
+
 }

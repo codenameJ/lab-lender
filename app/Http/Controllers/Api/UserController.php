@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Student;
+use App\Ta;
 use Illuminate\Http\Request;
-use App\user;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,8 +18,19 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+
+        $users = User::with('Ta')->with('Student')->get();
+
         return response()->json($users);
+
+        // $users = User::all();
+        // return response()->json($users);
+
+        // $tas = Ta::all();
+        // return response()->json($tas);
+
+        // $students = Ta::all();
+        // return response()->json($students);
     }
 
     /**
@@ -38,23 +52,47 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Name'=>'required',
-            'Email'=>'required',
-            'Phone'=>'required',
-            'Password'=>'required',
-            'Activation'=>'required',
-            'Type'=>'required',
-         ]);
-         $user = User::create([
-             'Name'=> $request->Name,
-             'Email'=> $request->Email,
-             'Phone'=> $request->Phone,
-             'Password'=> bcrypt($request->Password),
-             'Activation'=> $request->Activation,
-             'Type'=> $request->Type,
-         ]);
- 
-         return response(['message'=>'User Added', 'user'=>$user]);
+            // 'User_id'=>'required',
+            'Name' => 'required',
+            'Email' => 'required',
+            'Phone' => 'required',
+            'Password' => 'required',
+            'Activation' => 'required',
+            'Type' => 'required',
+            'Lab' => '',
+            'Stdid' => '',
+        ]);
+        $user = User::create([
+            //  'User_id' => $request->User_id,
+            'Name' => $request->Name,
+            'Email' => $request->Email,
+            'Phone' => $request->Phone,
+            'Password' => bcrypt($request->Password),
+            'Activation' => $request->Activation,
+            'Type' => $request->Type,
+        ]);
+
+        //  return response(['message'=>'User Added', 'user'=>$user]);
+
+        if ($request->Type === 'ta') {
+            $ta = Ta::create([
+                'TA_Name' => $user->Name,
+                'client_id' => $user->User_id,
+                'Lab_id' => $request->Lab,
+            ]);
+
+            return response(['message' => 'ta Added', 'ta' => $ta]);
+        }
+
+        if ($request->Type === 'student') {
+            $student = Student::create([
+                'Student_id' => $request->Stdid,
+                'Student_Name' => $user->Name,
+                'client_id' => $user->User_id,
+            ]);
+
+            return response(['message' => 'student Added', 'student' => $student]);
+        }
     }
 
     /**
@@ -89,19 +127,46 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'Name'=>'required',
-            'Email'=>'required',
-            'Phone'=>'required',
-            'Activation'=>'required',
-         ]);
-         $user->update([
-             'Name'=> $request->Name,
-             'Email'=> $request->Email,
-             'Phone'=> $request->Phone,
-             'Activation'=> $request->Activation,
-         ]);
- 
-         return response(['message'=>'User Updated', 'user'=>$user]);
+            'Name' => 'required',
+            'Email' => 'required',
+            'Phone' => 'required',
+            'Activation' => 'required',
+            'Type' => 'required',
+            'Lab' => '',
+            'Stdid' => '',
+        ]);
+
+        $user->update([
+            'Name' => $request->Name,
+            'Email' => $request->Email,
+            'Phone' => $request->Phone,
+            'Activation' => $request->Activation,
+            'Type' => $request->Type,
+        ]);
+
+        //  return response(['message'=>'User Updated', 'user'=>$user]);
+
+
+        if ($request->Type === 'ta') {
+            $editta = Ta::where('client_id', '=', $user->User_id);
+            $editta->update([
+                'TA_Name' => $request->Name,
+                'Lab_id' => $request->Lab,
+            ]);
+
+            return response(['message' => 'ta Update', 'ta' => $editta]);
+        }
+
+        if ($request->Type === 'student') {
+            $editstd = Student::where('client_id', '=', $user->User_id);
+            $editstd->update([
+                'Student_id' => $request->Stdid,
+                'Student_Name' => $request->Name,
+                'client_id' => $user->User_id,
+            ]);
+
+            return response(['message' => 'student Update', 'student' => $editstd]);
+        }
     }
 
     /**

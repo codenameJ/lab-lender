@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLabsTable extends Migration
+class CreateStudentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLabsTable extends Migration
      */
     public function up()
     {
-        Schema::table('labs', function (Blueprint $table) {
+        Schema::table('students', function (Blueprint $table) {
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ class CreateLabsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('labs');
+        Schema::dropIfExists('students');
     }
 }
