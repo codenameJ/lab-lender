@@ -75,9 +75,7 @@
                                             </v-col>
                                             <v-col cols="12" sm="6" md="4">
                                                 <v-select
-                                                    v-model="
-                                                        editedItem.Type
-                                                    "
+                                                    v-model="editedItem.Type"
                                                     :items="selecttype"
                                                     label="Type"
                                                     item-text="name"
@@ -85,6 +83,26 @@
                                                     chips
                                                 ></v-select>
                                             </v-col>
+
+                                            <v-col cols="12" sm="6" md="4">
+                                                <v-text-field
+                                                    v-if="
+                                                        editedItem.Type == 'ta'
+                                                    "
+                                                    v-model="editedItem.Lab"
+                                                    label="Lab ID"
+                                                ></v-text-field>
+                                                
+                                                <v-text-field
+                                                    v-if="
+                                                        editedItem.Type ==
+                                                            'student'
+                                                    "
+                                                    v-model="editedItem.Stdid"
+                                                    label="Student ID"
+                                                ></v-text-field>
+                                            </v-col>
+
                                             <v-col cols="12" sm="6" md="4">
                                                 <v-select
                                                     v-model="
@@ -147,7 +165,7 @@ export default {
         dialog: false,
         search: "",
         headers: [
-            // { text: "ID", value: "User_id" },
+            { text: "ID", value: "User_id" },
             { text: "Name", value: "Name" },
             {
                 text: "E-mail",
@@ -163,23 +181,34 @@ export default {
             { text: "Actions", value: "action", sortable: false }
         ],
         users: [],
+        // tas: [],
+        // students: [],
         editedIndex: -1,
         editedItem: {
             Name: "",
             Email: "",
             Phone: 0,
-            Type:"",
+            Type: "",
             Activation: "",
+            Lab: 0,
+            Stdid: 0,
         },
         defaultItem: {
             Name: "",
             Email: "",
             Phone: 0,
-            Type:"",
+            Type: "",
             Activation: "",
+            Lab: 0,
+            Stdid: 0,
         },
+        // curta: {
+        // },
+        // curstd: {
+
+        // },
         selectactivation: ["Yes", "No"],
-        selecttype: [ "student", "ta", "admin"],
+        selecttype: ["student", "ta", "admin"]
         // },
     }),
 
@@ -202,6 +231,8 @@ export default {
 
     created() {
         this.getUserData();
+        // this.getTaData();
+        // this.getStudentData();
     },
 
     methods: {
@@ -212,9 +243,25 @@ export default {
             });
         },
 
+        // getTaData() {
+        //     axios.get("api/ta").then(Response => {
+        //         this.tas = Response.data;
+        //         console.log(this.tas);
+        //     });
+        // },
+
+        // getStudentData() {
+        //     axios.get("api/student").then(Response => {
+        //         this.students = Response.data;
+        //         console.log(this.students);
+        //     });
+        // },
+
         editItem(item) {
             this.editedIndex = this.users.indexOf(item);
             this.editedItem = Object.assign({}, item);
+            // this.curta = Object.assign({},item);
+            // this.curstd = Object.assign({},item);
             this.dialog = true;
         },
 
@@ -237,20 +284,52 @@ export default {
         },
 
         save() {
+            // edit user
             if (this.editedIndex > -1) {
                 Object.assign(this.users[this.editedIndex], this.editedItem);
                 axios
                     .put("api/user/" + this.editedItem.User_id, this.editedItem)
                     .then(response => console.log(response.data));
+
+                if (this.editedItem.Type === "ta") {
+                    axios
+                        .put(
+                            "/api/ta/" + this.editedItem.User_id,
+                            this.editedItem
+                        )
+                        .then(response => console.log(response.data));
+                }
+
+                if (this.editedItem.Type === "student") {
+                    axios
+                        .put(
+                            "/api/student/" + this.editedItem.User_id,
+                            this.editedItem
+                        )
+                        .then(response => console.log(response.data));
+                }
+
             } else {
+                // add new user
                 this.users.push(this.editedItem);
                 axios
                     .post("api/user", this.editedItem)
                     .then(response => console.log(response.data));
 
-                // location.reload();
+                if (this.editedItem.Type === "ta") {
+                    axios
+                        .post("/api/ta", this.editedItem)
+                        .then(response => console.log(response.data));
+                }
+
+                if (this.editedItem.Type === "student") {
+                    axios
+                        .post("/api/student", this.editedItem)
+                        .then(response => console.log(response.data));
+                }
             }
             this.close();
+            location.reload();
         }
     }
 };

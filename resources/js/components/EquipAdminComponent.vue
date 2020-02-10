@@ -231,10 +231,10 @@ export default {
                 this.equips.push(this.editedItem);
                 axios
                     .post("api/equipment", this.editedItem)
-                    .then(response => console.log(response.data));
-                // location.reload();
+                    .then(response => console.log(response.data));   
             }
             this.close();
+            location.reload();
         }
     }
 };

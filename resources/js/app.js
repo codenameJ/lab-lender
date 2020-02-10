@@ -36,6 +36,11 @@ Vue.component('home-alert', require('./components/Home_alert.vue').default);
 
 Vue.component('footer-lab', require('./components/FooterComponent.vue').default);
 
+Vue.component('student', require('./components/StudentComponent.vue').default);
+Vue.component('ta', require('./components/TaComponent.vue').default);
+
+Vue.component('checkout', require('./components/CheckoutComponent.vue').default);
+Vue.component('request', require('./components/RequestComponent.vue').default);
 
 const app = new Vue({
     el: '#app',

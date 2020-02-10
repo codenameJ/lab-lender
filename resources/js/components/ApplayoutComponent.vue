@@ -11,49 +11,58 @@
                     <v-icon>notifications</v-icon>
                 </v-btn>
 
-                <v-menu bottom left>
+                <!-- <v-dialog v-model="dialog" max-width="500px">
                     <template v-slot:activator="{ on }">
-                        <v-btn icon v-on="on">
-                            <v-icon>shopping_cart</v-icon>
-                        </v-btn>
+                        <v-badge>
+                            <span slot="badge">{{ badge }}</span>
+                            <v-icon v-on="on">shopping_cart</v-icon>
+                        </v-badge>
                     </template>
                     <v-card>
-                        <v-list>
-                            <h5 class="mt-2" align="center">
-                                Lending cart  <v-icon>shopping_cart</v-icon>
-                            </h5>
-                            <v-divider></v-divider>
-                            <v-list-item>
-                                <!-- <v-list-item-avatar>
-                                    <img
-                                        src="https://cdn.vuetifyjs.com/images/john.jpg"
-                                        alt="John"
-                                    />
-                                </v-list-item-avatar> -->
+                        <v-card-title>
+                            <span class="headline">Lending Cart</span>
+                        </v-card-title>
+                        <v-card-text>
+                            <v-container>
+                                <v-row>
+                                    <table
+                                        class="table table-striped text left"
+                                    >
+                                        <tr
+                                            v-for="(cart, n) in carts"
+                                            v-bind:key="cart.id"
+                                        >
+                                            <td>
+                                                {{ cart.Equip_Name }}
+                                            </td>
+                                            <td>
+                                                {{ cart.amount }}
+                                            </td>
+                                            <td>
+                                                <v-btn
+                                                    color="blue darken-1"
+                                                    text
+                                                    @click="removeCart(n)"
+                                                    >delete</v-btn
+                                                >
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </v-row>
+                            </v-container>
+                        </v-card-text>
 
-                                <v-list-item-content>
-                                    <v-list-item-title
-                                        >เซนเซอร์แสง (Light
-                                        Sensor)</v-list-item-title
-                                    >
-                                    <v-list-item-subtitle
-                                        >x 1 ชิ้น</v-list-item-subtitle
-                                    >
-                                </v-list-item-content> </v-list-item><v-divider> </v-divider>
-                            <v-list-item>
-                                <v-list-item-content>
-                                    <v-list-item-title
-                                        >เซนเซอร์หี (Hee
-                                        Sensor)</v-list-item-title
-                                    >
-                                    <v-list-item-subtitle
-                                        >x 7 ชิ้น</v-list-item-subtitle
-                                    >
-                                </v-list-item-content>
-                            </v-list-item>
-                        </v-list>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="blue darken-1" text @click="close"
+                                >Cancel</v-btn
+                            >
+                            <v-btn color="blue darken-1" text @click="save"
+                                >Save</v-btn
+                            >
+                        </v-card-actions>
                     </v-card>
-                </v-menu>
+                </v-dialog> -->
 
                 <v-menu bottom left>
                     <template v-slot:activator="{ on }">
@@ -81,12 +90,12 @@
                                 </v-list-item-avatar>
 
                                 <v-list-item-content>
-                                    <v-list-item-title
-                                        >{{username}}</v-list-item-title
-                                    >
-                                    <v-list-item-subtitle
-                                        >{{type}}</v-list-item-subtitle
-                                    >
+                                    <v-list-item-title>{{
+                                        username
+                                    }}</v-list-item-title>
+                                    <v-list-item-subtitle>{{
+                                        type
+                                    }}</v-list-item-subtitle>
                                 </v-list-item-content>
                             </v-list-item>
                         </v-list>
@@ -140,8 +149,16 @@
                 </v-list-item>
                 <v-divider></v-divider>
 
-                <v-list nav dense>
-                    <template v-for="item in menu">
+                <v-list
+                    nav
+                    dense
+                    v-if="
+                        type == 'admin'
+                            ? (selmenu = menu)
+                            : (selmenu = usermenu)
+                    "
+                >
+                    <template v-for="item in selmenu">
                         <v-row
                             v-if="item.heading"
                             :key="item.heading"
@@ -225,6 +242,10 @@
 <script>
 export default {
     props: ["username", "type"],
+
+    // created() {
+    //     this.viewCart();
+    // },
     mounted() {
         console.log(this.username);
     },
@@ -235,9 +256,49 @@ export default {
         fixed: false,
         dialog: false,
         drawer: true,
+        // carts: [],
+        // cartadd: {
+        //     id: 0,
+        //     Equip_id: 0,
+        //     Equip_Name: "",
+        //     amount: 0
+        // },
+        // badge: "0",
         useritems: [
             { title: "Profile", href: "/" },
             { title: "Log Out", href: "/logout" }
+        ],
+        usermenu: [
+            {
+                icon: "home",
+                "icon-alt": "home",
+                text: "หน้าหลัก",
+                href: "/home"
+            },
+            {
+                icon: "announcement",
+                "icon-alt": "announcement",
+                text: "ประกาศ",
+                href: "/announcement"
+            },
+            {
+                icon: "build",
+                "icon-alt": "build",
+                text: "อุปกรณ์",
+                href: "/equipment"
+            },
+            {
+                icon: "assignment",
+                "icon-alt": "assignment",
+                text: "คำขอยืม",
+                href: "/request"
+            },
+            {
+                icon: "history",
+                "icon-alt": "history",
+                text: "ประวัติ",
+                href: "/history"
+            }
         ],
         menu: [
             {
@@ -297,7 +358,11 @@ export default {
         }
     },
 
-    watch: {},
+    watch: {
+        dialog(val) {
+            val || this.close();
+        }
+    },
 
     methods: {
         sidebarToggle() {
@@ -308,7 +373,40 @@ export default {
             if (this.isMobile) {
                 this.drawer = false;
             }
-        }
+        },
+        // viewCart() {
+        //     if (localStorage.getItem("carts")) {
+        //         this.carts = JSON.parse(localStorage.getItem("carts"));
+        //         this.badge = this.carts.length;
+        //     }
+        // },
+        // removeCart(pro) {
+        //     this.carts.splice(pro, 1);
+        //     this.storeCart();
+        // },
+        // addCart(pro) {
+        //     this.cartadd.id = pro.id;
+        //     this.cartadd.Equip_id = pro.Equip_id;
+        //     this.cartadd.Equip_Name = pro.Equip_Name;
+        //     this.cartadd.amount = this.quantity;
+        //     this.carts.push(this.cartadd);
+        //     this.cartadd = {};
+        //     this.storeCart();
+        //     this.close();
+        // },
+        // storeCart() {
+        //     let parsed = JSON.stringify(this.carts);
+        //     localStorage.setItem("carts", parsed);
+        //     this.viewCart();
+        // },
+        // close() {
+        //     this.dialog = false;
+        // },
+
+        // save() {
+
+        //     this.close();
+        // },
     }
 };
 </script>

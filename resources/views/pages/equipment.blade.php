@@ -5,7 +5,7 @@
 <!-- <equipment-admin></equipment-admin> -->
 <!-- <eqcom></eqcom> -->
 
-@if ((auth()->check() && Auth::user()->Type == 'admin'))
+@if ((auth()->check() && (Auth::user()->Type == 'admin' || Auth::user()->Type == 'ta')))
 <equipment-admin></equipment-admin>
 @else
 <equipment></equipment>

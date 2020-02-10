@@ -28,3 +28,4 @@ Route::get('/request', 'Pages\RequestController@index')->name('request');
 Route::get('/user/student', 'Pages\StudentController@index')->name('student');
 Route::get('/user/ta', 'Pages\TaController@index')->name('ta');
 Route::get('/user', 'Pages\UserController@index')->name('user');
+Route::get('/equipment/checkout', 'Pages\CheckoutController@index')->name('checkout');
